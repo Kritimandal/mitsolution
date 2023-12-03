@@ -1,0 +1,20 @@
+.custom-form-group {
+  margin-bottom: 25px;
+}
+
+.custom-form-group>label {
+  display: block;
+  font-size: 18px;
+  color: #004781;
+}
+.form-group.required .col-form-label:after {
+  content:"*";
+  color:red;
+}
+
+
+
+
+
+
+

@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Libre+Franklin:wght@500&family=Poppins&family=Quicksand:wght@600&family=Roboto:wght@300;400&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Quicksand;
+}
+
+.studentservice {
+  display: none;
+}
+
+.studyabroad {
+  display: none;
+}
+.studentservices:hover i {
+  transform: rotateX(180deg);
+  transform-origin: center;
+  transition: 0.1s linear;
+}
+.studentservices:hover .studentservice {
+  display: block;
+}
+.studyabroads:hover .studyabroad {
+  display: block;
+}
+.studyabroads:hover i {
+  transform: rotateX(180deg);
+  transform-origin: center;
+  transition: 0.1s linear;
+}
+.courses:hover .course {
+  display: block;
+}
+.course {
+  display: none;
+}
+.courses:hover i {
+  transform: rotateX(180deg);
+  transform-origin: center;
+  transition: 0.1s linear;
+}
+.scholarships:hover .scholarship {
+  transition: transform 2s linear;
+  display: block;
+}
+.scholarship {
+  display: none;
+}
+.scholarships:hover i {
+  transform: rotateX(180deg);
+  transform-origin: center;
+  transition: 0.1s linear;
+}

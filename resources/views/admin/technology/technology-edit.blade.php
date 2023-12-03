@@ -1,0 +1,83 @@
+@extends('layouts.appDashboard')
+
+@section('content')
+    <div class="row px-2 pt-4">
+        <span class="h2 px-4 fw-semibold text-center" style="color: #004781;">
+            Sub tag settings
+        </span>
+    </div>
+    <div class="px-2 px-md-4">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            {{-- <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="unpaid-tab" data-bs-toggle="tab" data-bs-target="#unpaid" type="button"
+                    role="tab" aria-controls="unpaid" aria-selected="true">Add Client Settings</button>
+            </li> --}}
+            <a href="{{ route('technology-index') }}" class="text-decoration-none"><button class="nav-link">View
+                    Sub tag Section Settings</button></a>
+        </ul>
+        <div class="tab-content py-2 navsTabsShadow" id="myTabContent">
+            {{-- add tab --}}
+            <div class="tab-pane fade show  active" id="unpaid" role="tabpanel" aria-labelledby="unpaid-tab">
+                <div class="container-fluid p-3">
+                    <form method="POST" action="{{ route('technology-update', $technology) }}" enctype="multipart/form-data">
+                        @csrf
+                        @method('POST')
+                        <div class="row">
+                            <div class="mb-3">
+                                <label for="name" class="col-form-label">Sub tag Name:</label>
+                                <input type="text" name="name" class="form-control" id="name"
+                                    placeholder="Branch Name" value="{{ old('name', $technology->name) }}">
+                                @if ($errors->has('name'))
+                                    <div class="error text-danger">{{ $errors->first('name') }}
+                                    </div>
+                                @endif
+                            </div>
+                            {{-- <div class="mb-3">
+                                <label for="description" class="col-form-label">Description:</label>
+                                <input type="text" name="description" class="form-control" id="description"
+                                    placeholder="Branch description" value="{{ old('description', $technology->description) }}">
+                                @if ($errors->has('description'))
+                                    <div class="error text-danger">{{ $errors->first('description') }}
+                                    </div>
+                                @endif
+                            </div> --}}
+                        </div>
+                            <div class="row">
+                            <div class="mb-3 col-6">
+                                <label for="image" class="col-form-label">Image:</label>
+                                <input type="file" name="image" class="form-control" id="image"
+                                    placeholder="tag image" value="{{ old('image') }}">
+                                @if ($errors->has('image'))
+                                    <div class="error text-danger">{{ $errors->first('image') }}
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="mb-3">
+                                <label for="alt_text" class="col-form-label">Alt Text</label>
+                                <input type="text" name="alt_text" class="form-control" id="alt_text"
+                                    placeholder="Branch alt_text" value="{{ old('alt_text', $technology->alt_text) }}">
+                                @if ($errors->has('alt_text'))
+                                    <div class="error text-danger">{{ $errors->first('alt_text') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tag_id" class="col-form-label">tag:</label>
+                            <select class="form-select" name="tag_id" required aria-label="Default select example">
+                                @foreach ($tags as $tag)
+                                    <option {{ old('tag_id', $technology->tag_id) == $tag->id ? 'selected' : '' }} value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('tag_id'))
+                                <div class="error text-danger">{{ $errors->first('tag_id') }}
+                                </div>
+                            @endif
+                        </div>
+                        <button type="submit" class="btn blue_button">Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
