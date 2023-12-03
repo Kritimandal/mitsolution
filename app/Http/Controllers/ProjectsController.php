@@ -64,10 +64,8 @@ class ProjectsController extends Controller
 
     public function edit(Projects $project)
     {
-        $categories = Projects::get();
         $posts= Post::get();
         return view("admin.project.project-edit", [
-            "categories" => $categories,
             "project" => $project,
             "posts" => $posts
         ]);

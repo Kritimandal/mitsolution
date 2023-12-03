@@ -6,8 +6,8 @@
         <div class="row m-0 p-0 d-flex justify-content-between content-box">
             <div class="col-md-12 col-xxl-7 col-xl-8 col-lg-7">
                 <label for="">
-                    <h1 class="text-white"> {!! $banner->title !!}
-                    </h1>
+                    <h2 class="text-white"> {!! $banner->title !!}
+                    </h2>
                 </label>
                 <p class="main-p text-justify">
                     {{ $banner->description }}
@@ -41,7 +41,7 @@
         <label class="mb-4 mb-md-1  mb-lg-4 pt-3" for="our-services">
 
 
-            <h4>{{ $subcategory->name }}</h4>
+            <h2>{{ $subcategory->name }}</h2>
         </label>
         <div class="row">
             <div class="col-12 order-1 order-md-2 order-lg-1  col-md-4  d-flex justify-content-center align-items-center">
@@ -59,7 +59,7 @@
                     <div class="row">
                         <div class="col-4 d-flex justify-content-center align-items-center">
                             <div class="container-fluid justify-content-center align-items-center">
-                                <h1 class="text-dark text-center">10</h1>
+                                <h3 class="text-dark text-center">10</h3>
                                 <div class="container-fluid d-flex justify-content-center">
                                     <span class="text-center fw-semibold"> Team Members</span>
                                 </div>
@@ -67,7 +67,7 @@
                         </div>
                         <div class="col-4 d-flex justify-content-center align-items-center">
                             <div class="container-fluid justify-content-center align-items-center">
-                                <h1 class="text-dark text-center">+20</h1>
+                                <h3 class="text-dark text-center">+20</h3>
                                 <div class="container-fluid d-flex justify-content-center">
                                     <span class="text-center fw-semibold">Succesful Projects</span>
                                 </div>
@@ -75,7 +75,7 @@
                         </div>
                         <div class="col-4 d-flex justify-content-center align-items-center">
                             <div class="container-fluid justify-content-center align-items-center">
-                                <h1 class="text-dark text-center">+7</h1>
+                                <h3 class="text-dark text-center">+7</h3>
                                 <div class="container-fluid d-flex justify-content-center">
                                     <span class="text-center fw-semibold"> Years in IT Sphere</span>
                                 </div>
@@ -222,11 +222,12 @@
                                 <div
                                     class="col-sm-4 col-md-3 col-xl-5 p-0 m-0 d-flex justify-content-center align-items-center ">
                                     <div class="container-fluid p-0 m-0">
-                                        <h1 class="text-center"> {{$project->name}}</h1>
+                                        <h2 class="text-center text-white"> {{$project->name}}</h2>
                                         <div class="row d-flex justify-content-center p-0 m-0">
+                                            
                                             <div
                                                 class="col-12 col-xl-5 d-flex justify-content-end p-0 m-0 d-flex justify-content-center justify-content-xl-end pb-1 pb-xl-0 ">
-                                                <a href="#" class="text-decoration-none p-0 m-0">
+                                                <a href="{{route('post', $project->post)}}" class="text-decoration-none p-0 m-0">
                                                     <div class="btn align-items-center refrence-button">
                                                         <h5 class="text-light">About</h5>
                                                     </div>

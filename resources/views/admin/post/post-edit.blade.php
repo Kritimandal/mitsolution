@@ -85,7 +85,7 @@
                             <label for="sub_category_id" class="col-form-label">Category:</label>
                             <select class="form-select" name="sub_category_id" required aria-label="Default select example">
                                 @foreach ($subcategories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    <option {{ old('sub_category_id', $post->sub_category_id) == $category->id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->name }}</option>
                                 @endforeach
     
                             </select>

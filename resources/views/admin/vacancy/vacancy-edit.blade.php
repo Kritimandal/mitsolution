@@ -3,30 +3,30 @@
 @section('content')
     <div class="row px-2 pt-4">
         <span class="h2 px-4 fw-semibold text-center" style="color: #004781;">
-            Testimonial Section settings
+            vacancy Section settings
         </span>
     </div>
     <div class="px-2 px-md-4">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             {{-- <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="unpaid-tab" data-bs-toggle="tab" data-bs-target="#unpaid" type="button"
-                    role="tab" aria-controls="unpaid" aria-selected="true">Add testimonial Settings</button>
+                    role="tab" aria-controls="unpaid" aria-selected="true">Add vacancy Settings</button>
             </li> --}}
-            <a href="{{ route('testimonial-index') }}" class="text-decoration-none"><button class="nav-link">View
-                    Testimonial Section Settings</button></a>
+            <a href="{{ route('vacancy-index') }}" class="text-decoration-none"><button class="nav-link">View
+                    vacancy Section Settings</button></a>
         </ul>
         <div class="tab-content py-2 navsTabsShadow" id="myTabContent">
             {{-- add tab --}}
             <div class="tab-pane fade show  active" id="unpaid" role="tabpanel" aria-labelledby="unpaid-tab">
                 <div class="container-fluid p-3">
-                    <form method="POST" action="/testimonial-update" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('vacancy-update', $vacancy) }}" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
                         <div class="row">
                             <div class="mb-3">
                                 <label for="name" class="col-form-label">Name:</label>
                                 <input type="text" name="name" class="form-control" id="name"
-                                    placeholder="name" value="{{ old('name', $testimonial->name) }}">
+                                    placeholder="name" value="{{ old('name', $vacancy->name) }}">
                                 @if ($errors->has('name'))
                                     <div class="error text-danger">{{ $errors->first('name') }}
                                     </div>
@@ -35,7 +35,7 @@
                             <div class="mb-3">
                                 <label for="designation" class="col-form-label">Designation:</label>
                                 <input type="text" name="designation" class="form-control" id="designation"
-                                    placeholder="designation" value="{{ old('designation', $testimonial->designation) }}">
+                                    placeholder="designation" value="{{ old('designation', $vacancy->designation) }}">
                                 @if ($errors->has('designation'))
                                     <div class="error text-danger">{{ $errors->first('designation') }}
                                     </div>
@@ -55,7 +55,7 @@
                             <div class="mb-3">
                                 <label for="alt_text" class="col-form-label">Alt Text</label>
                                 <input type="text" name="alt_text" class="form-control" id="alt_text"
-                                    placeholder="alt_text" value="{{ old('alt_text', $testimonial->alt_text) }}">
+                                    placeholder="alt_text" value="{{ old('alt_text', $vacancy->alt_text) }}">
                                 @if ($errors->has('alt_text'))
                                     <div class="error text-danger">{{ $errors->first('alt_text') }}
                                     </div>
@@ -66,7 +66,7 @@
                             <div class="mb-3">
                                 <label for="content" class="col-form-label">Content</label>
                                 <input type="text" name="content" class="form-control" id="content"
-                                    placeholder="Testimonial content" value="{{ old('content', $testimonial->content) }}">
+                                    placeholder="vacancy content" value="{{ old('content', $vacancy->content) }}">
                                 @if ($errors->has('content'))
                                     <div class="error text-danger">{{ $errors->first('content') }}
                                     </div>
@@ -75,7 +75,7 @@
                             <div class="mb-3">
                                 <label for="rating" class="col-form-label">Rating</label>
                                 <input type="number" name="rating" class="form-control" id="rating"
-                                    placeholder="rating" value="{{ old('rating', $testimonial->rating) }}">
+                                    placeholder="rating" value="{{ old('rating', $vacancy->rating) }}">
                                 @if ($errors->has('rating'))
                                     <div class="error text-danger">{{ $errors->first('rating') }}
                                     </div>

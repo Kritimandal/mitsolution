@@ -112,4 +112,12 @@ class FrontendController extends Controller
             "service3"=>$services3
         ]);
     }
+
+    public function post( Post $post )
+    {
+        
+        return view('frontend.post', [
+            "post" => $post,
+        ]);
+    }
 }

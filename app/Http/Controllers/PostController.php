@@ -70,9 +70,9 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        $categories = SubCategory::get();
+        $subcategories = SubCategory::get();
         return view("admin.post.post-edit", [
-            "categories" => $categories,
+            "subcategories" => $subcategories,
             "post" => $post
         ]);
     }

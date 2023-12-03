@@ -84,7 +84,7 @@
                             </div>
                             <div class="card-footer d-flex justify-content-center"
                                 style="background-color: white; border:0;">
-                                <a href="#">
+                                <a href="{{ route('application-create') }}">
                                     <div class="btn" style="color: white; background-color:#ff555a; margin-bottom:-26px">
                                         Drop your Cv</div>
                                 </a>

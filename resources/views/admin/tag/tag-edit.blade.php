@@ -3,29 +3,29 @@
 @section('content')
     <div class="row px-2 pt-4">
         <span class="h2 px-4 fw-semibold text-center" style="color: #004781;">
-            Category Section settings
+            Tag Section settings
         </span>
     </div>
     <div class="px-2 px-md-4">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             {{-- <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="unpaid-tab" data-bs-toggle="tab" data-bs-target="#unpaid" type="button"
-                    role="tab" aria-controls="unpaid" aria-selected="true">Add Category Settings</button>
+                    role="tab" aria-controls="unpaid" aria-selected="true">Add tag Settings</button>
             </li> --}}
-            <a href="{{ route('category-index') }}" class="text-decoration-none"><button class="nav-link">View
-                    Category Section Settings</button></a>
+            <a href="{{ route('tag-index') }}" class="text-decoration-none"><button class="nav-link">View
+                    Tag Section Settings</button></a>
         </ul>
         <div class="tab-content py-2 navsTabsShadow" id="myTabContent">
             {{-- add tab --}}
             <div class="tab-pane fade show  active" id="unpaid" role="tabpanel" aria-labelledby="unpaid-tab">
                 <div class="container-fluid p-3">
-                    <form method="POST" action="{{ route('category-update',$setting) }}">
+                    <form method="POST" action="{{ route('tag-update',$tag) }}">
                         @csrf
                         @method('POST')
                         <div class="mb-3">
-                            <label for="name" class="col-form-label">Category Name:</label>
+                            <label for="name" class="col-form-label">Tag Name:</label>
                             <input type="text" name="name" class="form-control" id="name"
-                                placeholder="Branch Name" value="{{ old('name', $category->name) }}">
+                                placeholder=" Name" value="{{ old('name', $tag->name) }}">
                             @if ($errors->has('name'))
                                 <div class="error text-danger">{{ $errors->first('name') }}
                                 </div>

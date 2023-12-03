@@ -38,32 +38,30 @@
         <div class="col-12 col-md-10 col-lg-8">
             <div class="card vacancy_card_2 p-5 bg-light">
                 <h3 class="text-center p-2">Contact Us</h3>
-                <form action="">
+                <form action="/contact-store" method="POST">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" aria-describedby="emailHelp"
+                    <input type="text" class="form-control" name="name" id="name" aria-describedby="emailHelp"
                         placeholder="Enter Your Name">
 
                     <br>
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                    <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp"
                         placeholder="Enter your email">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                         else.</small>
                     <br>
                     <label for="phone_no">Phone Number</label>
-                    <input type="text" class="form-control" id="phone_no" aria-describedby="emailHelp"
+                    <input type="text" class="form-control" name="phone_no" id="phone_no" aria-describedby="emailHelp"
                         placeholder="Enter your email">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your phone number with anyone
                         else.</small><br>
                     <label for="pmessage">Message</label>
-                    <textarea class="form-control" id="message" rows="3"></textarea>
+                    <textarea class="form-control" name="message" id="message" rows="3"></textarea>
                     <div class="container-fluid m-0 px-0 py-2 ">
                         <div class="col-12 col-md-5 py-4" style="max-width: 200px;">
                             <div class="submit-button">Contact Us</div>
                         </div>
                     </div>
-
-
                 </form>
             </div>
         </div>

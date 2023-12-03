@@ -3,18 +3,18 @@
 @section('content')
     <div class="row px-2 pt-4">
         <span class="h2 px-4 fw-semibold text-center" style="color: #004781;">
-            Team Management
+            vacancy Management
         </span>
     </div>
     <div class="px-2 px-md-4">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <a href="{{ route('team-create') }}" class="text-decoration-none"><button class="nav-link">Add
-                        Team</button></a>
+                <a href="{{ route('vacancy-create') }}" class="text-decoration-none"><button class="nav-link">Add
+                        vacancy</button></a>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="paid-tab" data-bs-toggle="tab" data-bs-target="#paid" type="button"
-                    role="tab" aria-controls="paid" aria-selected="false">View team</button>
+                    role="tab" aria-controls="paid" aria-selected="false">View vacancy</button>
             </li>
         </ul>
         <div class="tab-content py-2 navsTabsShadow" id="myTabContent">
@@ -77,26 +77,26 @@
                                     </td>
                                 </tr>
                             @endforeach --}}
-                            @foreach ($teams as $key => $team)
+                            @foreach ($vacancys as $key => $vacancy)
                                 <tr class=" text-center">
                                     <td scope="row">{{ $key + 1 }}</td>
-                                    <td scope="row">{{ $team->name }}</td>
-                                    <td scope="row">{{ $team->designation }}</td>
-                                    <td scope="row">{{ $team->content }}</td>
-                                    <td scope="row">{{ $team->rating }}</td>
-                                    <td><img src="{{ asset('images/photos/' . $team->image) }}"
-                                            alt="{{ $team->alt_text }}" height="100" width="100"></td>
+                                    <td scope="row">{{ $vacancy->name }}</td>
+                                    <td scope="row">{{ $vacancy->designation }}</td>
+                                    <td scope="row">{{ $vacancy->content }}</td>
+                                    <td scope="row">{{ $vacancy->rating }}</td>
+                                    <td><img src="{{ asset('images/photos/' . $vacancy->image) }}"
+                                            alt="{{ $vacancy->alt_text }}" height="100" width="100"></td>
 
                                     <td>
                                         <div class="container-fluid d-flex">
 
 
-                                            <a class="mx-2" href="{{ route('team-edit', $team) }}">
+                                            <a class="mx-2" href="{{ route('vacancy-edit', $vacancy) }}">
                                                 <div class="btn blue_button sized"><i
                                                         class='bx bx-message-square-edit'></i>edit
                                                 </div>
                                             </a>
-                                            <a class="mx-2" href="{{ route('team-delete', $team) }}">
+                                            <a class="mx-2" href="{{ route('vacancy-delete', $vacancy) }}">
                                                 <div class="btn btn-danger sized"><i
                                                         class='bx bx-message-square-edit'></i>Delete
                                                 </div>
@@ -117,7 +117,7 @@
                     <div class="col-7 d-flex justify-content-end">
                         <div class="d-flex p-0 m-0">
                             <a class="text-decoration-none"
-                                href="{{ $teams->withQueryString()->previousPageUrl() }}">
+                                href="{{ $vacancys->withQueryString()->previousPageUrl() }}">
 
                                 <div class="btn btn-primary btn-sm d-flex align-items-center justify-content-center">
                                     Previous
@@ -125,12 +125,12 @@
                             </a>
                             <div
                                 class="active_page btn btn-sm mx-1 btn-info text-dark fw-bold d-flex align-items-center justify-content-center">
-                                {{ $teams->currentPage() }}
+                                {{ $vacancys->currentPage() }}
 
                             </div>
 
 
-                            <a class="text-decoration-none" href="{{ $teams->withQueryString()->nextPageUrl() }}">
+                            <a class="text-decoration-none" href="{{ $vacancys->withQueryString()->nextPageUrl() }}">
                                 <div class="btn btn-sm btn-primary d-flex align-items-center justify-content-center">
                                     Next
                                 </div>
@@ -153,7 +153,7 @@
                 perPage: perPageEl.value,
                 page: 1,
             };
-            const url = new URL("{{ url('/') }}/team-index");
+            const url = new URL("{{ url('/') }}/vacancy-index");
             url.search = new URLSearchParams(queryParams).toString();
             window.location.href = url
         }

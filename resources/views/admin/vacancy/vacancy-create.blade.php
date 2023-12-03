@@ -3,23 +3,23 @@
 @section('content')
     <div class="row px-2 pt-4">
         <span class="h2 px-4 fw-semibold text-center" style="color: #004781;">
-            Testimonial Section settings
+            Vacancy Section settings
         </span>
     </div>
     <div class="px-2 px-md-4">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="unpaid-tab" data-bs-toggle="tab" data-bs-target="#unpaid" type="button"
-                    role="tab" aria-controls="unpaid" aria-selected="true">Add testimonial Settings</button>
+                    role="tab" aria-controls="unpaid" aria-selected="true">Add vacancy Settings</button>
             </li>
-            <a href="{{ route('testimonial-index') }}" class="text-decoration-none"><button class="nav-link">View
-                    Testimonial Section Settings</button></a>
+            <a href="{{ route('vacancy-index') }}" class="text-decoration-none"><button class="nav-link">View
+                    Vacancy Section Settings</button></a>
         </ul>
         <div class="tab-content py-2 navsTabsShadow" id="myTabContent">
             {{-- add tab --}}
             <div class="tab-pane fade show  active" id="unpaid" role="tabpanel" aria-labelledby="unpaid-tab">
                 <div class="container-fluid p-3">
-                    <form method="POST" action="/testimonial-store" enctype="multipart/form-data">
+                    <form method="POST" action="/vacancy-store" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
                         <div class="row">
@@ -66,7 +66,7 @@
                             <div class="mb-3">
                                 <label for="content" class="col-form-label">Content</label>
                                 <input type="text" name="content" class="form-control" id="content"
-                                    placeholder="Testimonial content" value="{{ old('content') }}">
+                                    placeholder="vacancy content" value="{{ old('content') }}">
                                 @if ($errors->has('content'))
                                     <div class="error text-danger">{{ $errors->first('content') }}
                                     </div>

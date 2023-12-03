@@ -3,7 +3,7 @@
 @section('content')
     <div class="row px-2 pt-4">
         <span class="h2 px-4 fw-semibold text-center" style="color: #004781;">
-            Sub Category settings
+            Project settings
         </span>
     </div>
     <div class="px-2 px-md-4">
@@ -12,21 +12,21 @@
                 <button class="nav-link active" id="unpaid-tab" data-bs-toggle="tab" data-bs-target="#unpaid" type="button"
                     role="tab" aria-controls="unpaid" aria-selected="true">Add Client Settings</button>
             </li> --}}
-            <a href="{{ route('projects-index') }}" class="text-decoration-none"><button class="nav-link">View
-                    Sub Category Section Settings</button></a>
+            <a href="{{ route('project-index') }}" class="text-decoration-none"><button class="nav-link">View
+                    Project Section Settings</button></a>
         </ul>
         <div class="tab-content py-2 navsTabsShadow" id="myTabContent">
             {{-- add tab --}}
             <div class="tab-pane fade show  active" id="unpaid" role="tabpanel" aria-labelledby="unpaid-tab">
                 <div class="container-fluid p-3">
-                    <form method="POST" action="{{ route('projects-update', $projects) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('project-update', $project) }}" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
                         <div class="row">
                             <div class="mb-3">
-                                <label for="name" class="col-form-label">Sub Category Name:</label>
+                                <label for="name" class="col-form-label">Project Name:</label>
                                 <input type="text" name="name" class="form-control" id="name"
-                                    placeholder="Branch Name" value="{{ old('name', $projects->name) }}">
+                                    placeholder="Branch Name" value="{{ old('name', $project->name) }}">
                                 @if ($errors->has('name'))
                                     <div class="error text-danger">{{ $errors->first('name') }}
                                     </div>
@@ -36,7 +36,7 @@
                                 <label for="description" class="col-form-label">Description:</label>
                                 <input type="text" name="description" class="form-control" id="description"
                                     placeholder="Branch description"
-                                    value="{{ old('description', $projects->description) }}">
+                                    value="{{ old('description', $project->description) }}">
                                 @if ($errors->has('description'))
                                     <div class="error text-danger">{{ $errors->first('description') }}
                                     </div>
@@ -47,7 +47,7 @@
                             <div class="mb-3">
                                 <label for="status" class="col-form-label">Status</label>
                                 <input type="text" name="status" class="form-control" id="status" placeholder=" status"
-                                    value="{{ old('status',$projects->status ) }}">
+                                    value="{{ old('status',$project->status ) }}">
                                 @if ($errors->has('status'))
                                     <div class="error text-danger">{{ $errors->first('status') }}
                                     </div>
@@ -56,7 +56,7 @@
                             <div class="mb-3">
                                 <label for="priority" class="col-form-label">Priority:</label>
                                 <input type="text" name="priority" class="form-control" id="priority"
-                                    placeholder=" priority" value="{{ old('priority',$projects->status) }}">
+                                    placeholder=" priority" value="{{ old('priority',$project->status) }}">
                                 @if ($errors->has('priority'))
                                     <div class="error text-danger">{{ $errors->first('priority') }}
                                     </div>
@@ -76,7 +76,7 @@
                             <div class="mb-3">
                                 <label for="alt_text" class="col-form-label">Alt Text</label>
                                 <input type="text" name="alt_text" class="form-control" id="alt_text"
-                                    placeholder="Branch alt_text" value="{{ old('alt_text', $projects->alt_text) }}">
+                                    placeholder="Branch alt_text" value="{{ old('alt_text', $project->alt_text) }}">
                                 @if ($errors->has('alt_text'))
                                     <div class="error text-danger">{{ $errors->first('alt_text') }}
                                     </div>
@@ -86,7 +86,7 @@
                                 <label for="post_id" class="col-form-label">Post Id:</label>
                                 <select class="form-select" name="post_id" required aria-label="Default select example">
                                     @foreach ($posts as $post)
-                                        <option value="{{ $post->id }}">{{ $post->name }}</option>
+                                        <option {{ old('post_id', $project->post_id) == $post->id ? 'selected' : '' }} value="{{ $post->id }}">{{ $post->title }}</option>
                                     @endforeach
         
                                 </select>

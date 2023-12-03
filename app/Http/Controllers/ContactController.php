@@ -43,7 +43,7 @@ class ContactController extends Controller
        
 
         Contact::create($data);
-        return redirect('/contact-index');
+        return redirect('/contact-us')->with('status', 'Your message was sent successfully');
     }
 
     public function edit(Contact $contact)

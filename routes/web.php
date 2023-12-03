@@ -22,11 +22,17 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\FrontendController::class, 'index'])->name('homepage');
 Route::get('/contact-us', [App\Http\Controllers\FrontendController::class, 'contact'])->name('contact-us');
+Route::post('/contact-store', [App\Http\Controllers\ContactController::class, 'store'])->name('contact-store');
+
 Route::get('/about-us', [App\Http\Controllers\FrontendController::class, 'about'])->name('about-us');
 Route::get('/service', [App\Http\Controllers\FrontendController::class, 'service'])->name('service');
 Route::get('/our-team', [App\Http\Controllers\FrontendController::class, 'team'])->name('our-team');
 Route::get('/our-clients', [App\Http\Controllers\FrontendController::class, 'client'])->name('our-clients');
 Route::get('/careers', [App\Http\Controllers\FrontendController::class, 'career'])->name('careers');
+Route::get('/post/{post}', [App\Http\Controllers\FrontendController::class, 'post'])->name('post');
+Route::get('/application-create', [App\Http\Controllers\ApplicationController::class, 'create'])->name('application-create');
+Route::get('/application-store', [App\Http\Controllers\ApplicationController::class, 'store'])->name('application-store');
+
 
 
 Route::group(["middleware" => "auth"], function () {
@@ -52,7 +58,7 @@ Route::group(["middleware" => "auth"], function () {
     // for contact
     Route::get('/contact-create', [App\Http\Controllers\ContactController::class, 'create'])->name('contact-create');
     Route::get('/contact-index', [App\Http\Controllers\ContactController::class, 'index'])->name('contact-index');
-    Route::post('/contact-store', [App\Http\Controllers\ContactController::class, 'store'])->name('contact-store');
+    
     Route::get('/contact-edit/{contact}', [App\Http\Controllers\ContactController::class, 'edit'])->name('contact-edit');
     Route::post('/contact-update/{contact}', [App\Http\Controllers\ContactController::class, 'update'])->name('contact-update');
     Route::post('/contact-delete/{contact}', [App\Http\Controllers\ContactController::class, 'destroy'])->name('contact-delete');
@@ -115,15 +121,17 @@ Route::group(["middleware" => "auth"], function () {
     Route::get('/project-create', [App\Http\Controllers\ProjectsController::class, 'create'])->name('project-create');
     Route::get('/project-index', [App\Http\Controllers\ProjectsController::class, 'index'])->name('project-index');
     Route::post('/project-store', [App\Http\Controllers\ProjectsController::class, 'store'])->name('project-store');
-    Route::get('/project-edit/{projects}', [App\Http\Controllers\ProjectsController::class, 'edit'])->name('project-edit');
-    Route::post('/project-update/{projects}', [App\Http\Controllers\ProjectsController::class, 'update'])->name('project-update');
-    Route::post('/project-delete/{projects}', [App\Http\Controllers\ProjectsController::class, 'destroy'])->name('project-delete');
+    Route::get('/project-edit/{project}', [App\Http\Controllers\ProjectsController::class, 'edit'])->name('project-edit');
+    Route::post('/project-update/{project}', [App\Http\Controllers\ProjectsController::class, 'update'])->name('project-update');
+    Route::post('/project-delete/{project}', [App\Http\Controllers\ProjectsController::class, 'destroy'])->name('project-delete');
 
     Route::get('/tag-create', [App\Http\Controllers\TagController::class, 'create'])->name('tag-create');
     Route::get('/tag-index', [App\Http\Controllers\TagController::class, 'index'])->name('tag-index');
     Route::post('/tag-store', [App\Http\Controllers\TagController::class, 'store'])->name('tag-store');
-    Route::get('/tag-edit/{tags}', [App\Http\Controllers\TagController::class, 'edit'])->name('tag-edit');
-    Route::post('/tag-update/{tags}', [App\Http\Controllers\TagController::class, 'update'])->name('tag-update');
-    Route::post('/tag-delete/{tags}', [App\Http\Controllers\TagController::class, 'destroy'])->name('tag-delete');
+    Route::get('/tag-edit/{tag}', [App\Http\Controllers\TagController::class, 'edit'])->name('tag-edit');
+    Route::post('/tag-update/{tag}', [App\Http\Controllers\TagController::class, 'update'])->name('tag-update');
+    Route::post('/tag-delete/{tag}', [App\Http\Controllers\TagController::class, 'destroy'])->name('tag-delete');
+
+    Route::get('/application-index', [App\Http\Controllers\ApplicationController::class, 'index'])->name('application-index');
 
 });

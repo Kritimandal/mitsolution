@@ -253,6 +253,34 @@
                     </div>
                 </a>
             </li>
+            <li class="mt-2 ">
+                <a href="{{ route('contact-index') }}">
+
+                    <div class="iocn-link">
+                        <i class='mainI bi bi-chat-text-fill'></i>
+                        <span class="link_name"> Contact Inbox</span>
+                        <ul class="sub-menu blank">
+                            <li>
+                                <div class="link_name">Contact Inbox</div>
+                            </li>
+                        </ul>
+                    </div>
+                </a>
+            </li>
+            <li class="mt-2 ">
+                <a href="{{ route('application-index') }}">
+
+                    <div class="iocn-link">
+                        <i class='mainI bi bi-chat-text-fill'></i>
+                        <span class="link_name"> Submitted Applications</span>
+                        <ul class="sub-menu blank">
+                            <li>
+                                <div class="link_name">Submitted Applications</div>
+                            </li>
+                        </ul>
+                    </div>
+                </a>
+            </li>
             {{-- <li class="mt-2 ">
                 <a href="{{ route('user-create') }}">
 

@@ -62,7 +62,7 @@ class TechnologyController extends Controller
     {
         $tags = Tag::get();
         return view("admin.technology.technology-edit", [
-            "categories" => $tags,
+            "tags" => $tags,
             "technology" => $technology
         ]);
     }
