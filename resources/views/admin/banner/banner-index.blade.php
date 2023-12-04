@@ -47,6 +47,8 @@
                                 </th>
                                 <th scope="col" class="text-light" style="background-color: #515151">Description
                                     </th>
+                                 <th scope="col" class="text-light" style="background-color: #515151">Category
+                                    </th>
                                 <th scope="col" class="text-light" style="background-color: #515151">Image
                                     </th>
 
@@ -78,7 +80,8 @@
                             <tr class=" text-center">
                                 <td scope="row">{{$key+1}}</td>
                                 <td scope="row">{{$banner->title}}</td>
-                                <td scope="row">{{$banner->description}}</td>
+                                
+                                <td scope="row">{{$banner->category->name}}</td>
 
                                 <td ><img src="{{asset('images/photos/'.$banner->image)}}" alt="{{$banner->alt_text}}" height="100"
                                     width="100"></td>

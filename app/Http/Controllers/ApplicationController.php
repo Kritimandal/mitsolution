@@ -6,6 +6,7 @@ use App\Models\Application;
 use App\Models\Banner;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ApplicationController extends Controller
 {
@@ -18,12 +19,12 @@ class ApplicationController extends Controller
         $main_query = Application::query();
 
         if ($request->perPage > 0) {
-            $categories = $main_query->paginate($request->perPage);
+            $applications = $main_query->paginate($request->perPage);
         } else
-            $categories = $main_query->paginate(10);
+            $applications = $main_query->paginate(10);
 
 
-        return view("admin.application-index", ["categories" => $categories]);
+        return view("admin.application-index", ["applications" => $applications]);
     }
     public function create()
     {
@@ -42,14 +43,26 @@ class ApplicationController extends Controller
             "name" => ["required", "string"],
             "resume"=> ["required"],
             "email"=>["required", "string"],
-            "phone_no" => ["required","integer","size:10"],
+            "phone_no" => ["required"],
             "message"=>["required", "string"],
-
             "position" => ["required", "string"]
 
         ]);
+        $resume = $request->file('resume');
+        $fileName['file_name'] = "resume" . date('Ymdhis') . random_int(0, 1234) . "." . $resume->getClientOriginalName() ;
+
+        $destinationPath = public_path('/resume');
+        $resume->move($destinationPath, $fileName['file_name']);
+        $data['resume'] = $fileName['file_name'];
         Application::create($data);
         return redirect('/application-create')->with('status', 'Your application has been submitted successfully!');
+    }
+
+    public function download($filename)
+    {
+        $path = public_path("resume/{$filename}");
+    
+        return response()->download($path);
     }
 
     /**

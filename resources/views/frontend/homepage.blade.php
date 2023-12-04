@@ -1,4 +1,13 @@
 @extends('layouts.frontend-layout.master')
+@section('title')
+    {{ $setting->meta_title }}
+@endsection
+@section('meta_description')
+    <meta name="description" content="{{ $setting->meta_description }} ">
+@endsection
+@section('meta_keywords')
+    <meta name="keyword" content="{{ $setting->meta_keywords }} ">
+@endsection
 @section('content')
     {{-- banner section --}}
 
@@ -16,7 +25,8 @@
 
                     <div class="container-fluid m-0 px-0 py-2">
                         <div class="col-12 col-md-5 py-4" style="max-width: 200px;">
-                            <div class="submit-button">Explore All</div>
+                            <div class="submit-button"><a href="#our-solution" class="text-decoration-none text-white">
+                                    Explore All</a></div>
                         </div>
                     </div>
 
@@ -91,7 +101,7 @@
     {{-- end service section --}}
 
     {{-- our solution section --}}
-    <section class="solution-section wrapper">
+    <section class="solution-section wrapper" id="our-solution">
         <div class="container ">
             <h2>Our Solutions</h2>
             <div class="d-flex align-items-start p-0 m-0 tech-we-work ">
@@ -118,7 +128,7 @@
                                 <div class="col-4 p-2 col-md-2">
                                     <div class="card tech-icons  px-0 m-0">
                                         <div class=" card-body"><img src="{{ 'images/photos/' . $technology->image }}"
-                                                alt="" width="100%">
+                                                alt="{{ $technology->alt_text }}" width="100%">
                                         </div>
                                         <div class="text-center">
                                             <span class="icon-label">{{ $technology->name }}</span>
@@ -136,7 +146,7 @@
                                 <div class="col-4 p-2 col-md-2">
                                     <div class="card tech-icons  px-0 m-0">
                                         <div class=" card-body"><img src="{{ 'images/photos/' . $technology->image }}"
-                                                alt="" width="100%">
+                                                alt="{{ $technology->alt_text }}" width="100%">
                                         </div>
                                         <div class="text-center">
                                             <span class="icon-label">{{ $technology->name }}</span>
@@ -145,8 +155,6 @@
 
                                 </div>
                             @endforeach
-
-
                         </div>
 
                     </div>
@@ -157,7 +165,7 @@
                                 <div class="col-4 p-2 col-md-2">
                                     <div class="card tech-icons  px-0 m-0">
                                         <div class=" card-body"><img src="{{ 'images/photos/' . $technology->image }}"
-                                                alt="" width="100%">
+                                                alt="{{ $technology->alt_text }}" width="100%">
                                         </div>
                                         <div class="text-center">
                                             <span class="icon-label">{{ $technology->name }}</span>
@@ -178,7 +186,7 @@
                                 <div class="col-4 p-2 col-md-2">
                                     <div class="card tech-icons  px-0 m-0">
                                         <div class=" card-body"><img src="{{ 'images/photos/' . $technology->image }}"
-                                                alt="" width="100%">
+                                                alt="{{ $technology->alt_text }}" width="100%">
                                         </div>
                                         <div class="text-center">
                                             <span class="icon-label">{{ $technology->name }}</span>
@@ -187,9 +195,6 @@
 
                                 </div>
                             @endforeach
-
-
-
                         </div>
                     </div>
                 </div>
@@ -207,48 +212,47 @@
             style=" background-image:url('{{ asset('images/medias/project-banner.png') }}'); background-size: fit; background-repeat: no-repeat; min-height:315px">
             <div id="carouselExampleControls" class="carousel slide " data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    @foreach ( $projects as $project )
-                        
-                    
-                    <div class="carousel-item active" data-bs-interval="90000">
-                        <div class="container-fluid px-0 px-lg-5">
-                            <div class="row px-2 px-md-5 d-flex justify-content-between align-items-center">
-                                <div class="col-sm-8 col-md-9 col-xl-6 p-0 m-0">
-                                    <div class="container-fluid">
-                                        <img src="{{ asset('images/photos/'. $project->image) }}" class="img-fluid"
-                                            alt="">
+                    @foreach ($projects as $project)
+                        <div class="carousel-item active" data-bs-interval="90000">
+                            <div class="container-fluid px-0 px-lg-5">
+                                <div class="row px-2 px-md-5 d-flex justify-content-between align-items-center">
+                                    <div class="col-sm-8 col-md-9 col-xl-6 p-0 m-0">
+                                        <div class="container-fluid">
+                                            <img src="{{ asset('images/photos/' . $project->image) }}" class="img-fluid"
+                                                alt="">
+                                        </div>
                                     </div>
-                                </div>
-                                <div
-                                    class="col-sm-4 col-md-3 col-xl-5 p-0 m-0 d-flex justify-content-center align-items-center ">
-                                    <div class="container-fluid p-0 m-0">
-                                        <h2 class="text-center text-white"> {{$project->name}}</h2>
-                                        <div class="row d-flex justify-content-center p-0 m-0">
-                                            
-                                            <div
-                                                class="col-12 col-xl-5 d-flex justify-content-end p-0 m-0 d-flex justify-content-center justify-content-xl-end pb-1 pb-xl-0 ">
-                                                <a href="{{route('post', $project->post)}}" class="text-decoration-none p-0 m-0">
-                                                    <div class="btn align-items-center refrence-button">
-                                                        <h5 class="text-light">About</h5>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div
-                                                class="col-12 col-xl-7 p-0 m-0 d-flex justify-content-center justify-content-xl-start">
-                                                <a href="{{ $project->demo_url}}" class="text-decoration-none">
-                                                    <div class="btn align-items-center  refrence-button">
-                                                        <h5 class="text-light">Site Extension</h5>
-                                                    </div>
-                                                </a>
+                                    <div
+                                        class="col-sm-4 col-md-3 col-xl-5 p-0 m-0 d-flex justify-content-center align-items-center ">
+                                        <div class="container-fluid p-0 m-0">
+                                            <h2 class="text-center text-white"> {{ $project->name }}</h2>
+                                            <div class="row d-flex justify-content-center p-0 m-0">
+
+                                                <div
+                                                    class="col-12 col-xl-5 d-flex justify-content-end p-0 m-0 d-flex justify-content-center justify-content-xl-end pb-1 pb-xl-0 ">
+                                                    <a href="{{ route('post', $project->post) }}"
+                                                        class="text-decoration-none p-0 m-0">
+                                                        <div class="btn align-items-center refrence-button">
+                                                            <h5 class="text-light">About</h5>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div
+                                                    class="col-12 col-xl-7 p-0 m-0 d-flex justify-content-center justify-content-xl-start">
+                                                    <a href="{{ $project->demo_url }}" class="text-decoration-none">
+                                                        <div class="btn align-items-center  refrence-button">
+                                                            <h5 class="text-light">Site Extension</h5>
+                                                        </div>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
-                    
+
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
                     data-bs-slide="prev">

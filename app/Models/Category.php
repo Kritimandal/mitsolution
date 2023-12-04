@@ -9,15 +9,20 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable= [
-        'name'
+    protected $fillable = [
+        'name',
+        'meta_description',
+        'meta_title',
+        'meta_keywords',
     ];
 
-    public function subcategory(){
+    public function subcategory()
+    {
         return $this->hasMany(SubCategory::class);
     }
 
-    public function banner(){
+    public function banner()
+    {
         return $this->hasMany(Banner::class);
     }
 }

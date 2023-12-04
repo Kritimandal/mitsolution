@@ -35,7 +35,7 @@
                             <div class="mb-3 col-6">
                                 <label for="site_email" class="col-form-label">Email:</label>
                                 <input type="text" name="site_email" class="form-control" id="site_email"
-                                    placeholder="site_email Id" value="{{ old('site_email', $setting->site_email) }}">
+                                    placeholder="enter email " value="{{ old('site_email', $setting->site_email) }}">
                                 @if ($errors->has('site_email'))
                                     <div class="error text-danger">{{ $errors->first('site_email') }}
                                     </div>
@@ -45,9 +45,38 @@
                         </div>
                         <div class="row">
                             <div class="mb-3 col-6">
+                                <label for="meta_title" class="col-form-label">Meta Title:</label>
+                                <input type="text" name="meta_title" class="form-control" id="meta_title"
+                                    placeholder="enter meta title here" value="{{ old('meta_title', $setting->meta_title) }}">
+                                @if ($errors->has('meta_title'))
+                                    <div class="error text-danger">{{ $errors->first('meta_title') }}
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="meta_description" class="col-form-label">Meta Description</label>
+                                <input type="text" name="meta_description" class="form-control" id="meta_description"
+                                    placeholder="enter meta description here" value="{{ old('meta_description', $setting->meta_description) }}">
+                                @if ($errors->has('meta_description'))
+                                    <div class="error text-danger">{{ $errors->first('meta_description') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="mb-3 col-12">
+                            <label for="meta_keywords" class="col-form-label">Meta Keywords</label>
+                            <input type="text" name="meta_keywords" class="form-control" id="meta_keywords"
+                                placeholder="enter site keywords here" value="{{ old('meta_keywords', $setting->meta_keywords) }}">
+                            @if ($errors->has('meta_keywords'))
+                                <div class="error text-danger">{{ $errors->first('meta_keywords') }}
+                                </div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-6">
                                 <label for="site_location" class="col-form-label">Location:</label>
                                 <input type="text" name="site_location" class="form-control" id="location"
-                                    placeholder="site_location" value="{{ old('site_location', $setting->site_location) }}">
+                                    placeholder="enter site location" value="{{ old('site_location', $setting->site_location) }}">
                                 @if ($errors->has('site_location'))
                                     <div class="error text-danger">{{ $errors->first('site_location') }}
                                     </div>
@@ -56,7 +85,7 @@
                             <div class="mb-3 col-6">
                                 <label for="site_phone_number" class="col-form-label">Phone Number:</label>
                                 <input type="text" name="site_phone_number" class="form-control" id="site_phone_number"
-                                    placeholder="site_phone_number" value="{{ old('site_phone_number', $setting->site_phone_number) }}">
+                                    placeholder="enter site's phone number" value="{{ old('site_phone_number', $setting->site_phone_number) }}">
                                 @if ($errors->has('site_phone_number'))
                                     <div class="error text-danger">{{ $errors->first('site_phone_number') }}
                                     </div>

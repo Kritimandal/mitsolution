@@ -12,6 +12,9 @@ class Post extends Model
     protected $fillable= [
         'title',
         'description',
+        'meta_title',
+        'meta_description',
+        'meta_keywords',
         'status',
         'image',
         'alt_text',
@@ -19,8 +22,9 @@ class Post extends Model
         'sub_category_id'
     ];
 
-    public function subcategory(){
-        return $this->belongsTo(SubCategory::class);
+    public function subcategory()
+    {
+        return $this->belongsTo(SubCategory::class, 'sub_category_id');
     }
 
     public function projects(){

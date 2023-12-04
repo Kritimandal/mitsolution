@@ -22,13 +22,12 @@ class PostController extends Controller
         } else
             $posts = $main_query->paginate(10);
 
-
         return view("admin.post.post-index", ["posts" => $posts]);
     }
     public function create()
     {
-       $subcategory = SubCategory::get();
-        return view("admin.post.post-create",[
+        $subcategory = SubCategory::get();
+        return view("admin.post.post-create", [
             "subcategory" => $subcategory
         ]);
     }
@@ -42,11 +41,14 @@ class PostController extends Controller
         $data = $request->validate([
             "title" => ["required", "string"],
             "description" => ["required", "string"],
+            "meta_title" => ["required", "string"],
+            "meta_description" => ["required", "string"],
+            "meta_keywords" => ["required", "string"],
             "status" => ["required"],
             "priority" => ["required"],
             "image" => ["required"],
             "alt_text" => ["nullable", "string"],
-            "sub_category_id" =>["required"]
+            "sub_category_id" => ["required"]
 
         ]);
         $image = $request->file('image');
@@ -88,11 +90,14 @@ class PostController extends Controller
             $data = $request->validate([
                 "title" => ["required", "string"],
                 "description" => ["required", "string"],
+                "meta_title" => ["required", "string"],
+                "meta_description" => ["required", "string"],
+                "meta_keywords" => ["required", "string"],
                 "image" => ["required"],
                 "status" => ["required"],
                 "priority" => ["required"],
                 "alt_text" => ["nullable", "string"],
-                "sub_category_id" =>["required"]
+                "sub_category_id" => ["required"]
 
             ]);
             $image = $request->file('image');
@@ -105,10 +110,13 @@ class PostController extends Controller
             $data = $request->validate([
                 "title" => ["required", "string"],
                 "description" => ["required", "string"],
+                "meta_title" => ["required", "string"],
+                "meta_description" => ["required", "string"],
+                "meta_keywords" => ["required", "string"],
                 "status" => ["required"],
                 "priority" => ["required"],
                 "alt_text" => ["nullable", "string"],
-                "sub_category_id" =>["required"]
+                "sub_category_id" => ["required"]
 
             ]);
         }

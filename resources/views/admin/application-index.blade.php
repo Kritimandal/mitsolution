@@ -3,20 +3,20 @@
 @section('content')
     <div class="row px-2 pt-4">
         <span class="h2 px-4 fw-semibold text-center" style="color: #004781;">
-            Sub Category Management
+            application Management
         </span>
     </div>
     <div class="px-2 px-md-4">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
+        {{-- <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <a href="{{ route('subcategory-create') }}" class="text-decoration-none"><button class="nav-link">Add
-                    Sub Category</button></a>
+                <a href="{{ route('application-create') }}" class="text-decoration-none"><button class="nav-link">Add
+                        application</button></a>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="paid-tab" data-bs-toggle="tab" data-bs-target="#paid" type="button"
-                    role="tab" aria-controls="paid" aria-selected="false">View sub category</button>
+                    role="tab" aria-controls="paid" aria-selected="false">View application</button>
             </li>
-        </ul>
+        </ul> --}}
         <div class="tab-content py-2 navsTabsShadow" id="myTabContent">
             <div class="row mb-2 justify-content-sm-start justify-content-md-between align-items-end px-3">
                 <div class="col-3 col-md-4 ">Show
@@ -32,29 +32,30 @@
                 <div class="col-9 col-md-4 d-flex justify-content-end search-position">
                     <input class="table-search-box" type="text" name="keyword" id="keyword" placeholder="Keyword"
                         value="{{ request()->keyword }}">
-                    <button type="btn" class="btn blue_button sized" onclick="go()"><i class="bi bi-search"></i></button>
+                    <button type="btn" class="btn blue_button sized" onclick="go()"><i
+                            class="bi bi-search"></i></button>
                 </div>
             </div>
             {{-- paid tab --}}
             <div class="tab-pane fade show active" id="paid" role="tabpanel" aria-labelledby="paid-tab">
                 <div class="table-responsive p-3">
-                    <table class="table table-stripped" style="width: 100%">
+                    <table class="table" style="width: 100%">
                         <thead>
                             <tr>
                                 <th scope="col" class="text-light" style="background-color:#1d1d1d">SN
                                 </th>
-                                <th scope="col" class="text-light" style="background-color: #515151">Sub Category Name
-                                    </th>
-                                    {{-- <th scope="col" class="text-light" style="background-color: #515151">Category
-                                    </th> --}}
-                                    <th scope="col" class="text-light" style="background-color: #1d1d1d">Description
-                                    </th>
-                                    <th scope="col" class="text-light" style="background-color: #515151">Category
-                                    </th>
-                                <th scope="col" class="text-light" style="background-color: #1d1d1d">Image
-                                    </th>
-                                    {{-- <th scope="col" class="text-light" style="background-color: #515151">Alt Text
-                                    </th> --}}
+                                <th scope="col" class="text-light" style="background-color: #515151">Name
+                                </th>
+                                <th scope="col" class="text-light" style="background-color: #515151">Applied Position
+                                </th>
+                                <th scope="col" class="text-light" style="background-color: #515151">Message
+                                </th>
+                                <th scope="col" class="text-light" style="background-color: #515151">email
+                                </th>
+                                <th scope="col" class="text-light" style="background-color: #515151">Phone No.
+                                </th>
+                                <th scope="col" class="text-light" style="background-color: #515151">Resume
+                                </th>
 
                                 <th scope="col" class="text-light" style="background-color:#1d1d1d">
                                     Action</th>
@@ -78,36 +79,35 @@
                                     </td>
                                 </tr>
                             @endforeach --}}
-                            @foreach ($subcategorys as $key=>$subcategory )
+                            @foreach ($applications as $key => $application)
+                                <tr class=" text-center">
+                                    <td scope="row">{{ $key + 1 }}</td>
+                                    <td scope="row">{{ $application->name }}</td>
+                                    <td scope="row">{{ $application->position }}</td>
+                                    <td scope="row">{{ $application->message }}</td>
+                                    <td scope="row">{{ $application->email }}</td>
+                                    <td scope="row">{{ $application->phone_no }}</td>
+                                    <td>{{ $application->resume }}<br><a class="btn btn-sm" href="{{ route('application-download', $application->resume) }} ">Download Resume</a></td>
+                               
+
+                                    <td>
+                                        <div class="container-fluid d-flex">
 
 
-                            <tr class=" text-center">
-                                <td scope="row">{{$key+1}}</td>
-                                <td scope="row">{{$subcategory->name}}</td>
-                                {{-- <td scope="row">{{$category->name}}</td> --}}
-                                <td scope="row">{{$subcategory->description}}</td>
-                                <td scope="row">{{$subcategory->category->name}}</td>
-                                <td ><img src="{{asset('images/photos/'.$subcategory->image)}}" alt="{{$subcategory->alt_text}}" height="100"
-                                    width="100"></td>
+                                            {{-- <a class="mx-2" href="{{ route('application-edit', $application) }}">
+                                                <div class="btn blue_button sized"><i
+                                                        class='bx bx-message-square-edit'></i>edit
+                                                </div>
+                                            </a> --}}
+                                            <a class="mx-2" href="{{ route('application-delete', $application) }}">
+                                                <div class="btn btn-danger sized"><i
+                                                        class='bx bx-message-square-edit'></i>Delete
+                                                </div>
+                                            </a>
 
-                                <td>
-                                    <div class="container-fluid d-flex">
-
-
-                                        <a class="mx-2" href="{{route('subcategory-edit',$subcategory)}}">
-                                            <div class="btn blue_button sized"><i
-                                                    class='bx bx-message-square-edit'></i><small>edit</small>
-                                            </div>
-                                        </a>
-                                        <a class="mx-2" href="{{route('subcategory-delete',$subcategory)}}">
-                                            <div class="btn btn-danger sized"><i
-                                                    class='bx bx-message-square-edit'></i><small>Delete</small>
-                                            </div>
-                                        </a>
-
-                                    </div>
-                                </td>
-                            </tr>
+                                        </div>
+                                    </td>
+                                </tr>
                             @endforeach
 
 
@@ -119,19 +119,21 @@
                 <div class="row px-3 pb-3 justify-content-end">
                     <div class="col-7 d-flex justify-content-end">
                         <div class="d-flex p-0 m-0">
-                            <a class="text-decoration-none" href="{{ $subcategorys->withQueryString()->previousPageUrl() }}">
+                            <a class="text-decoration-none"
+                                href="{{ $applications->withQueryString()->previousPageUrl() }}">
 
                                 <div class="btn btn-primary btn-sm d-flex align-items-center justify-content-center">
                                     Previous
                                 </div>
                             </a>
-                            <div class="active_page btn btn-sm mx-1 btn-info text-dark fw-bold d-flex align-items-center justify-content-center">
-                                {{ $subcategorys->currentPage() }}
+                            <div
+                                class="active_page btn btn-sm mx-1 btn-info text-dark fw-bold d-flex align-items-center justify-content-center">
+                                {{ $applications->currentPage() }}
 
                             </div>
 
 
-                            <a class="text-decoration-none" href="{{ $subcategorys->withQueryString()->nextPageUrl() }}">
+                            <a class="text-decoration-none" href="{{ $applications->withQueryString()->nextPageUrl() }}">
                                 <div class="btn btn-sm btn-primary d-flex align-items-center justify-content-center">
                                     Next
                                 </div>
@@ -145,7 +147,6 @@
 @endsection
 @section('footer')
     <script>
-
         let perPageEl = document.getElementById("perPage");
         const baseUrl = 'https://api.example.com';
 
@@ -155,10 +156,9 @@
                 perPage: perPageEl.value,
                 page: 1,
             };
-            const url = new URL("{{ url('/') }}/cleint-index");
+            const url = new URL("{{ url('/') }}/application-index");
             url.search = new URLSearchParams(queryParams).toString();
             window.location.href = url
         }
     </script>
 @endsection
-

@@ -13,9 +13,11 @@
     <link rel="stylesheet" href="{{ asset('css/frontend.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     {{-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> --}}
-   
-    <title>{{ config('app.name') }}</title>
-
+     @yield('meta_description', '<meta name="description" content="Elevate your business with MIT Solution – your go-to for custom software, website development, and comprehensive IT services. Our expert team crafts tailored solutions to enhance your digital presence. Partner with us for a seamless blend of innovation and implementation, and take your digital experience to the next level. ">')
+    @yield('meta_keywords')
+    {{-- <title>{{ config('app.name') }}</title> --}}
+    <title> @yield('title', 'MIT Solution') </title>
+        
 </head>
 
 <body>

@@ -37,13 +37,13 @@ class ContactController extends Controller
         $data = $request->validate([
             "name" => ["required", "string"],
             "email" => ["required", "string"],
-            "phone_number" => ["required", "integer","size:10"],
+            "phone_number" => ["required"],
             "message" => ["required", "string"],
         ]);
        
 
         Contact::create($data);
-        return redirect('/contact-us')->with('status', 'Your message was sent successfully');
+        return redirect('/contact-us')->with('status', 'Your message was sent successfully!');
     }
 
     public function edit(Contact $contact)
@@ -70,7 +70,7 @@ class ContactController extends Controller
         $data = $request->validate([
             "name" => ["required", "string"],
             "email" => ["required", "string"],
-            "phone_number" => ["required", "integer","size:10"],
+            "phone_number" => ["required"],
             "message" => ["required", "string"],
         ]);
         $contact->update($data);

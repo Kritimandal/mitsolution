@@ -1,4 +1,13 @@
 @extends('layouts.frontend-layout.master')
+@section('title')
+    {{ $setting->meta_title }}
+@endsection
+@section('meta_description')
+    <meta name="description" content="{{ $setting->meta_description }} ">
+@endsection
+@section('meta_keywords')
+    <meta name="keyword" content="{{ $setting->meta_keywords }} ">
+@endsection
 @section('content')
     <div class="container-fluid nav-container content_segment" style="min-height: 26vw; padding-top:48px;background:#0F749C">
         <div class="row m-0 p-0 d-flex justify-content-between content-box">
@@ -39,38 +48,39 @@
             <div class="card vacancy_card_2 p-5 bg-light">
                 <h3 class="text-center p-2">Apply Now</h3>
                 <form action="/application-store" method="POST" enctype="multipart/form-data">
-                    <label for="name">Full Name</label>
+                    @csrf
+                    <label for="name" class="text-dark h5">Full Name</label>
                     <input type="text" class="form-control" name="name" id="name" aria-describedby="emailHelp"
                         placeholder="Enter Your Full Name" required>
 
                     <br>
-                    <label for="email">Email</label>
+                    <label for="email" class="text-dark h5">Email</label>
                     <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp"
                         placeholder="Enter your email" required>
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                         else.</small>
                     <br>
-                    <label for="phone_no">Phone Number</label>
+                    <label for="phone_no" class="text-dark h5">Phone Number</label>
                     <input type="text" class="form-control" id="phone_no" name="phone_no" aria-describedby="emailHelp"
                         placeholder="Enter your email" required>
                     <small id="emailHelp" class="form-text text-muted">We'll never share your phone number with anyone
                         else.</small><br>
-                    <label for="position">Position</label>
-                    <input type="text" class="form-control" name="position" id="position" aria-describedby="emailHelp"
+                    <label for="position" class="text-dark h5">Position</label>
+                    <input type="text" class="form-control text-dark h5" name="position" id="position" aria-describedby="emailHelp"
                         placeholder="Enter job position" required>
 
-                    <label for="resume" class="col-form-label">Upload Resume: </label>
+                    <label for="resume" class="text-dark h5">Upload Resume: </label>
 
-                    <input type="file" name="resume" class="form-control" id="resume" placeholder="resume"
+                    <input type="file" name="resume" class="form-control text-dark h5" id="resume" placeholder="resume"
                         value="" required>
                     <span class="text-muted">Upload resume in ms word or pdf format only.</span>
+<br>
 
-
-                    <label for="message">Message</label>
+                    <label for="message " class="text-dark h5">Message</label>
                     <textarea class="form-control" name="message" id="message" rows="3"></textarea>
                     <div class="container-fluid m-0 px-0 py-2 ">
                         <div class="col-12 col-md-5 py-4" style="max-width: 200px;">
-                            <div class="submit-button">Send Application</div>
+                            <button type="submit" class="submit-button">Send Application</button>
                         </div>
                     </div>
                     <div class="card-body text-center text-success">

@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('site_location');
             $table->string('site_phone_number');
             $table->string('site_email');
+            $table->mediumText('meta_description');
+            $table->string('meta_title');
+            $table->mediumText('meta_keywords');
             $table->string('facebook_link');
             $table->string('linkedin_link');
             $table->string('twitter_link');

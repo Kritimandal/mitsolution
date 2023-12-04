@@ -10,7 +10,7 @@
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
                 <a href="{{ route('post-create') }}" class="text-decoration-none"><button class="nav-link">Add
-                    Post</button></a>
+                        Post</button></a>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="paid-tab" data-bs-toggle="tab" data-bs-target="#paid" type="button"
@@ -32,21 +32,34 @@
                 <div class="col-9 col-md-4 d-flex justify-content-end search-position">
                     <input class="table-search-box" type="text" name="keyword" id="keyword" placeholder="Keyword"
                         value="{{ request()->keyword }}">
-                    <button type="btn" class="btn blue_button sized" onclick="go()"><i class="bi bi-search"></i></button>
+                    <button type="btn" class="btn blue_button sized" onclick="go()"><i
+                            class="bi bi-search"></i></button>
                 </div>
             </div>
             {{-- paid tab --}}
             <div class="tab-pane fade show active" id="paid" role="tabpanel" aria-labelledby="paid-tab">
                 <div class="table-responsive p-3">
-                    <table class="table table-stripped" style="width: 100%">
+                    <table class="table table-stripped" style="width: 100%; font-size:13px;">
                         <thead>
                             <tr>
                                 <th scope="col" class="text-light" style="background-color:#1d1d1d">SN
                                 </th>
                                 <th scope="col" class="text-light" style="background-color: #515151">post Name
-                                    </th>
+                                </th>
+                                <th scope="col" class="text-light" style="background-color: #1d1d1d">Sub Category
+                                </th>
+                                
+                                <th scope="col" class="text-light" style="background-color: #515151">Description
+                                </th>
+                                <th scope="col" class="text-light" style="background-color: #1d1d1d">Meta Title
+                                </th>
+                                <th scope="col" class="text-light" style="background-color: #515151">Meta Keyword
+                                </th>
+                                <th scope="col" class="text-light" style="background-color: #1d1d1d">Meta description
+                                </th>
                                 <th scope="col" class="text-light" style="background-color: #515151">Image
-                                    </th>
+                                </th>
+
 
                                 <th scope="col" class="text-light" style="background-color:#1d1d1d">
                                     Action</th>
@@ -70,37 +83,39 @@
                                     </td>
                                 </tr>
                             @endforeach --}}
-                            @foreach ($posts as $key=>$post )
+                            @foreach ($posts as $key => $post)
+                                <tr class=" text-center">
+                                    <td scope="row">{{ $key + 1 }}</td>
+                                    <td scope="row">{{ Str::limit($post->title, 20) }}</td>
+                                    <td scope="row">{{ $post->SubCategory->name }}</td>
+                                    <td scope="row">{{ Str::limit($post->description, 30) }}</td>
+                                    <td scope="row">{{ Str::limit($post->meta_title, 20) }}</td>
+                                    <td scope="row">{{ Str::limit($post->meta_keywords, 30) }}</td>
+                                    <td scope="row">{{ Str::limit($post->meta_description, 30) }}</td>
+                                    <td><img src="{{ asset('images/photos/' . $post->image) }}" alt="{{ $post->alt_text }}"
+                                            height="100" width="100"></td>
 
 
-                            <tr class=" text-center">
-                                <td scope="row">{{$key+1}}</td>
-                                <td scope="row">{{$post->title}}</td>
+                                    {{-- <td scope="row">{{$post->content}}</td> --}}
 
-                                <td ><img src="{{asset('images/photos/'.$post->image)}}" alt="{{$post->alt_text}}" height="100"
-                                    width="100"></td>
-
-                                <td>
-                                    <tdscope="row">{{$post->content}}</td>
-    
                                     <td>
-                                    <div class="container-fluid d-flex">
+                                        <div class="container-fluid d-flex">
 
 
-                                        <a class="mx-2" href="{{route('post-edit',$post)}}">
-                                            <div class="btn blue_button sized"><i
-                                                    class='bx bx-message-square-edit'></i>edit
-                                            </div>
-                                        </a>
-                                        <a class="mx-2" href="{{route('post-delete',$post)}}">
-                                            <div class="btn btn-danger sized"><i
-                                                    class='bx bx-message-square-edit'></i>Delete
-                                            </div>
-                                        </a>
+                                            <a class="mx-2" href="{{ route('post-edit', $post) }}">
+                                                <div class="btn blue_button sized"><i
+                                                        class='bx bx-message-square-edit'></i>edit
+                                                </div>
+                                            </a>
+                                            <a class="mx-2" href="{{ route('post-delete', $post) }}">
+                                                <div class="btn btn-danger sized"><i
+                                                        class='bx bx-message-square-edit'></i>Delete
+                                                </div>
+                                            </a>
 
-                                    </div>
-                                </td>
-                            </tr>
+                                        </div>
+                                    </td>
+                                </tr>
                             @endforeach
 
 
@@ -118,7 +133,8 @@
                                     Previous
                                 </div>
                             </a>
-                            <div class="active_page btn btn-sm mx-1 btn-info text-dark fw-bold d-flex align-items-center justify-content-center">
+                            <div
+                                class="active_page btn btn-sm mx-1 btn-info text-dark fw-bold d-flex align-items-center justify-content-center">
                                 {{ $posts->currentPage() }}
 
                             </div>
@@ -138,7 +154,6 @@
 @endsection
 @section('footer')
     <script>
-
         let perPageEl = document.getElementById("perPage");
         const baseUrl = 'https://api.example.com';
 
@@ -154,4 +169,3 @@
         }
     </script>
 @endsection
-

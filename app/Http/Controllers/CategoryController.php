@@ -38,7 +38,10 @@ class CategoryController extends Controller
         //
 
         $data = $request->validate([
-            "name" => ["required", "string"]
+            "name" => ["required", "string"],
+            "meta_title" => ["required", "string"],
+            "meta_description" => ["required", "string"],
+            "meta_keywords" => ["required", "string"],
 
         ]);
         Category::create($data);
@@ -68,8 +71,10 @@ class CategoryController extends Controller
 
         
             $data = $request->validate([
-                "name" => ["required", "string"]
-
+                "name" => ["required", "string"],
+                "meta_title" => ["required", "string"],
+                "meta_description" => ["required", "string"],
+                "meta_keywords" => ["required", "string"],
             ]);
             $category->update($data);
             return redirect('/category-index');

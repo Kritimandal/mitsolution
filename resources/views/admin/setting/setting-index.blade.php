@@ -55,6 +55,29 @@
                     <div class="row">
                         <div class="col-6 col-xl-4">
                             <div class="container-fluid py-2">
+                                <label for="name" class="form-label h4 fw-semibold"
+                                    style="color: #004781;">Meta Title</label>
+                                <h3 id="name">{{ $setting->meta_title }}</h3>
+                            </div>
+                        </div>                       
+                    </div>
+                    <div class="col-12">
+                        <div class="container-fluid py-2">
+                            <label for="location" class="form-label h4 fw-semibold" style="color: #004781;">Meta Description
+                            </label>
+                            <h3 id="location">{{ $setting->meta_description }}</h3>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="container-fluid py-2">
+                            <label for="location" class="form-label h4 fw-semibold" style="color: #004781;">Meta Description
+                            </label>
+                            <h3 id="location">{{ $setting->meta_keywords }}</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 col-xl-4">
+                            <div class="container-fluid py-2">
                                 <label for="position_name" class="form-label h4 fw-semibold"
                                     style="color: #004781;">Phone</label>
                                 <h3 id="position_name">{{ $setting->site_phone_number }}</h3>
@@ -64,7 +87,6 @@
                             <div class="container-fluid py-2">
                                 <label for="branch" class="form-label h4 fw-semibold" style="color: #004781;">Email Id</label>
                                 <h3 id="branch">{{ $setting->site_email }}</h3>
-
                             </div>
                         </div>
 

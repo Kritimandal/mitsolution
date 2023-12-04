@@ -21,7 +21,7 @@ class SubCategory extends Model
 
     
     
-    public function Post(){
-        return $this->hasMany(Post::class);
+    public function post(){
+        return $this->hasMany(Post::class,'sub_category_id');
     }
 }

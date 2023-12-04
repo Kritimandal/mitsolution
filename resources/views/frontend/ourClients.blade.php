@@ -1,4 +1,13 @@
 @extends('layouts.frontend-layout.master')
+@section('title')
+    {{ $setting->meta_title }}
+@endsection
+@section('meta_description')
+    <meta name="description" content="{{ $setting->meta_description }} ">
+@endsection
+@section('meta_keywords')
+    <meta name="keyword" content="{{ $setting->meta_keywords }} ">
+@endsection
 @section('content')
     <div class="container-fluid nav-container content_segment" style="min-height: 26vw; padding-top:48px;background:#0F749C">
         <div class="row m-0 p-0 d-flex justify-content-between content-box">
@@ -14,7 +23,7 @@
 
                     <div class="container-fluid m-0 px-0 py-2">
                         <div class="col-12 col-md-5 py-4" style="max-width: 200px;">
-                            <div class="submit-button">Explore All</div>
+                            <div class="submit-button"><a class="text-decoration-none text-white" href="#trusted-by">Explore All</a></div>
                         </div>
                     </div>
 
@@ -35,7 +44,7 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid py-4" style="padding-left: 8%;  padding-right:8%;">
+    <div class="container-fluid py-4" style="padding-left: 8%;  padding-right:8%;" id="trusted-by">
         <h3>Trusted By Companies Including:</h3>
         <div class="row align-items-center d-flex justify-content-evenly">
             @foreach ($clients as $client)
@@ -61,7 +70,7 @@
                     </p>
                     <div class="container-fluid m-0 px-0 py-2">
                         <div class="col-12 col-md-5 py-4" style="max-width: 200px;">
-                            <a class="text-center submit-button" href="{{ route('contact-us') }}">Hire Us</a>
+                            <a class="text-center text-white submit-button" href="{{ route('contact-us') }}">Hire Us</a>
                         </div>
                     </div>
                 </div>

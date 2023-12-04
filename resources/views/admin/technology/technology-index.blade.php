@@ -45,12 +45,15 @@
                                 </th>
                                 <th scope="col" class="text-light" style="background-color: #515151">Technology Name
                                     </th>
+                                    <th scope="col" class="text-light" style="background-color: #515151">Tag Name
+                                    </th>
                                     {{-- <th scope="col" class="text-light" style="background-color: #515151">Category
                                     </th> --}}
                                     {{-- <th scope="col" class="text-light" style="background-color: #515151">Description
                                     </th> --}}
                                 <th scope="col" class="text-light" style="background-color: #515151">Image
                                     </th>
+                                    
                                     {{-- <th scope="col" class="text-light" style="background-color: #515151">Alt Text
                                     </th> --}}
 
@@ -82,7 +85,7 @@
                             <tr class=" text-center">
                                 <td scope="row">{{$key+1}}</td>
                                 <td scope="row">{{$technology->name}}</td>
-                                {{-- <td scope="row">{{$category->name}}</td> --}}
+                                <td scope="row">{{$technology->tag->name}}</td>
                                 
 
                                 <td ><img src="{{asset('images/photos/'.$technology->image)}}" alt="{{$technology->alt_text}}" height="100"

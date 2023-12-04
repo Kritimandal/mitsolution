@@ -147,7 +147,13 @@ a:hover {
     /* box-shadow: 4px 0px 4px #c2c2c2; */
     padding: 12px;
   }
-  
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+}
+.post-image{
+    max-width:800px;
+}
 .hover-image .imgBx img {
     width: 100%;
 }

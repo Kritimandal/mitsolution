@@ -31,6 +31,35 @@
                                 </div>
                             @endif
                         </div>
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <label for="meta_title" class="col-form-label">Meta Title:</label>
+                                <input type="text" name="meta_title" class="form-control" id="meta_title"
+                                    placeholder="enter meta title" value="{{ old('meta_title', $category->meta_title) }}">
+                                @if ($errors->has('meta_title'))
+                                    <div class="error text-danger">{{ $errors->first('meta_title') }}
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="meta_description" class="col-form-label">Meta Description</label>
+                                <input type="text" name="meta_description" class="form-control" id="meta_description"
+                                    placeholder=" enter meta description" value="{{ old('meta_description', $category->meta_description) }}">
+                                @if ($errors->has('meta_description'))
+                                    <div class="error text-danger">{{ $errors->first('meta_description') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="mb-3 col-12">
+                            <label for="meta_keywords" class="col-form-label">Meta Keywords</label>
+                            <input type="text" name="meta_keywords" class="form-control" id="meta_keywords"
+                                placeholder="enter meta keywords" value="{{ old('meta_keywords', $category->meta_keywords) }}">
+                            @if ($errors->has('meta_keywords'))
+                                <div class="error text-danger">{{ $errors->first('meta_keywords') }}
+                                </div>
+                            @endif
+                        </div>
                         <button type="submit" class="btn blue_button">Add</button>
                     </form>
                 </div>

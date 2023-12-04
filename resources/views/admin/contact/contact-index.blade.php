@@ -9,12 +9,12 @@
     <div class="px-2 px-md-4">
         {{-- <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <a href="{{ route('client-create') }}" class="text-decoration-none"><button class="nav-link">Add
-                    Client</button></a>
+                <a href="{{ route('contact-create') }}" class="text-decoration-none"><button class="nav-link">Add
+                    contact</button></a>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="paid-tab" data-bs-toggle="tab" data-bs-target="#paid" type="button"
-                    role="tab" aria-controls="paid" aria-selected="false">View Client</button>
+                    role="tab" aria-controls="paid" aria-selected="false">View contact</button>
             </li>
         </ul> --}}
         <div class="tab-content py-2 navsTabsShadow" id="myTabContent">
@@ -43,18 +43,16 @@
                             <tr>
                                 <th scope="col" class="text-light" style="background-color:#1d1d1d">SN
                                 </th>
-                                <th scope="col" class="text-light" style="background-color: #515151">Branch
+                                <th scope="col" class="text-light" style="background-color: #515151">Name
                                     </th>
-                                <th scope="col" class="text-light" style="background-color: #515151">Location
+                                <th scope="col" class="text-light" style="background-color: #515151">Phone No
                                     </th>
-                                <th scope="col" class="text-light" style="background-color: #515151">Contact
-                                    </th>
+                               
                                 <th scope="col" class="text-light" style="background-color: #515151">Email
                                     </th>
-                                <th scope="col" class="text-light" style="background-color: #515151">Branch Manager
+                                <th scope="col" class="text-light" style="background-color: #515151">Message
                                     </th>
-                                <th scope="col" class="text-light" style="background-color: #515151">Image
-                                    </th>
+                                
 
                                 <th scope="col" class="text-light" style="background-color:#1d1d1d">
                                     Action</th>
@@ -78,26 +76,29 @@
                                     </td>
                                 </tr>
                             @endforeach --}}
-                            @foreach ($Clients as $key=>$client )
+                            @foreach ($contacts as $key=>$contact )
 
 
                             <tr class=" text-center">
                                 <td scope="row">{{$key+1}}</td>
-                                <td scope="row">{{$client->name}}</td>
+                                <td scope="row">{{$contact->name}}</td>
+                                <td scope="row">{{$contact->phone_number}}</td>
+                                <td scope="row">{{$contact->email}}</td>
+                                <td scope="row">{{$contact->message}}</td>
+                                
 
-                                <td ><img src="{{asset('images/photos/'.$client->image)}}" alt="{{$client->alt_text}}" height="100"
-                                    width="100"></td>
+                                
 
                                 <td>
                                     <div class="container-fluid d-flex">
 
 
-                                        <a class="mx-2" href="{{route('client-edit',$client)}}">
+                                        {{-- <a class="mx-2" href="{{route('contact-edit',$contact)}}">
                                             <div class="btn blue_button sized"><i
                                                     class='bx bx-message-square-edit'></i>edit
                                             </div>
-                                        </a>
-                                        <a class="mx-2" href="{{route('client-delete',$client)}}">
+                                        </a> --}}
+                                        <a class="mx-2" href="{{route('contact-delete',$contact)}}">
                                             <div class="btn btn-danger sized"><i
                                                     class='bx bx-message-square-edit'></i>Delete
                                             </div>
@@ -107,29 +108,25 @@
                                 </td>
                             </tr>
                             @endforeach
-
-
-
-
                         </tbody>
                     </table>
                 </div>
                 <div class="row px-3 pb-3 justify-content-end">
                     <div class="col-7 d-flex justify-content-end">
                         <div class="d-flex p-0 m-0">
-                            <a class="text-decoration-none" href="{{ $clients->withQueryString()->previousPageUrl() }}">
+                            <a class="text-decoration-none" href="{{ $contacts->withQueryString()->previousPageUrl() }}">
 
                                 <div class="btn btn-primary btn-sm d-flex align-items-center justify-content-center">
                                     Previous
                                 </div>
                             </a>
                             <div class="active_page btn btn-sm mx-1 btn-info text-dark fw-bold d-flex align-items-center justify-content-center">
-                                {{ $clients->currentPage() }}
+                                {{ $contacts->currentPage() }}
 
                             </div>
 
 
-                            <a class="text-decoration-none" href="{{ $clients->withQueryString()->nextPageUrl() }}">
+                            <a class="text-decoration-none" href="{{ $contacts->withQueryString()->nextPageUrl() }}">
                                 <div class="btn btn-sm btn-primary d-flex align-items-center justify-content-center">
                                     Next
                                 </div>

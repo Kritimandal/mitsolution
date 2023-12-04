@@ -31,8 +31,8 @@ Route::get('/our-clients', [App\Http\Controllers\FrontendController::class, 'cli
 Route::get('/careers', [App\Http\Controllers\FrontendController::class, 'career'])->name('careers');
 Route::get('/post/{post}', [App\Http\Controllers\FrontendController::class, 'post'])->name('post');
 Route::get('/application-create', [App\Http\Controllers\ApplicationController::class, 'create'])->name('application-create');
-Route::get('/application-store', [App\Http\Controllers\ApplicationController::class, 'store'])->name('application-store');
-
+Route::post('/application-store', [App\Http\Controllers\ApplicationController::class, 'store'])->name('application-store');
+Route::get('/subcategory-post/{post}', [App\Http\Controllers\FrontendController::class, 'categorypost'])->name('subcategory-post');
 
 
 Route::group(["middleware" => "auth"], function () {
@@ -133,5 +133,7 @@ Route::group(["middleware" => "auth"], function () {
     Route::post('/tag-delete/{tag}', [App\Http\Controllers\TagController::class, 'destroy'])->name('tag-delete');
 
     Route::get('/application-index', [App\Http\Controllers\ApplicationController::class, 'index'])->name('application-index');
+    Route::get('/application-delete', [App\Http\Controllers\ApplicationController::class, 'destroy'])->name('application-delete');
+    Route::get('/application-download/{filename}', [App\Http\Controllers\ApplicationController::class, 'download'])->name('application-download');
 
 });

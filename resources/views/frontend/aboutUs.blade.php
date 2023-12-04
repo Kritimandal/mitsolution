@@ -1,4 +1,13 @@
 @extends('layouts.frontend-layout.master')
+@section('title')
+    {{ $setting->meta_title }}
+@endsection
+@section('meta_description')
+    <meta name="description" content="{{ $setting->meta_description }} ">
+@endsection
+@section('meta_keywords')
+    <meta name="keyword" content="{{ $setting->meta_keywords }} ">
+@endsection
 @section('content')
 
 <div class="container-fluid nav-container content_segment" style="min-height: 26vw; padding-top:48px;background:#0F749C">
@@ -15,7 +24,7 @@
 
                 <div class="container-fluid m-0 px-0 py-2">
                     <div class="col-12 col-md-5 py-4" style="max-width: 200px;">
-                        <div class="submit-button">Explore All</div>
+                        <div class="submit-button"><a href="#our-solution" class="text-decoration-none text-white">Explore All</a></div>
                     </div>
                 </div>
 

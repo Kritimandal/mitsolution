@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('meta_title');
+            $table->mediumText('meta_description');
+            $table->mediumText('meta_keywords');
             $table->longtext('description');
             $table->enum('status', [1, 0])->default(1);
             $table->string('image')->nullable();

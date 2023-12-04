@@ -12,4 +12,7 @@ class Tag extends Model
     protected $fillable= [
         'name'
     ];
+    public function technology(){
+        return $this->hasMany(Technology::class);
+    }
 }

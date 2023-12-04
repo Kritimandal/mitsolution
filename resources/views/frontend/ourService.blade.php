@@ -1,4 +1,16 @@
 @extends('layouts.frontend-layout.master')
+@section('title')
+    {{ $setting->meta_title }}
+@endsection
+@section('meta_description')
+    <meta name="description" content="{{ $setting->meta_description }} ">
+@endsection
+@section('meta_keywords')
+    <meta name="keyword" content="{{ $setting->meta_keywords }} ">
+@endsection
+@section('title')
+{{$setting->meta_description}}
+@endsection
 @section('content')
     <div class="container-fluid nav-container content_segment" style="min-height: 26vw; padding-top:48px;background:#0F749C">
         <div class="row m-0 p-0 d-flex justify-content-between content-box">
@@ -14,7 +26,7 @@
 
                     <div class="container-fluid m-0 px-0 py-2">
                         <div class="col-12 col-md-5 py-4" style="max-width: 200px;">
-                            <div class="submit-button">Explore All</div>
+                            <div class="submit-button"><a class="text-decoration-none text-white" href="#we-serve">Explore All</a></div>
                         </div>
                     </div>
 
@@ -42,10 +54,21 @@
                 <div class="col-12 order-2 order-md-1 order-md-1 col-md-8 px-0 pt-3 align-items-center">
                     <h2>{{ $service->name }}</h2>
                     <p class="main-p text-dark">{{ $service->description }}
+                        {{-- @if ($service->post) 
+                    @php
+                        
+                    
+                        $subCategoryPostId = $service->post->first()->id;
+                        
+                        dd($subCategoryPostId);
+                        @endphp
+                    @endif --}}
                     </p>
+                    
                     <div class="container-fluid m-0 px-0 py-2">
                         <div class="col-12 col-md-5 py-4" style="max-width: 200px;">
-                            <div class="submit-button">Read More</div>
+                            {{-- <div class="submit-button"><a href="{{route('subcategory-post', $service->post()->first()->id )}} " class="text-decoration-none text-white">Read More</a></div> --}}
+                            <div class="submit-button"><a href="{{route('subcategory-post',$service->post->first()->id )}} " class="text-decoration-none text-white">Read More</a></div>
                         </div>
                     </div>
 
@@ -75,7 +98,7 @@
                     <p class="main-p text-dark">{{ $service->description }}</p>
                     <div class="container-fluid m-0 px-0 py-2">
                         <div class="col-12 col-md-5 py-4" style="max-width: 200px;">
-                            <div class="submit-button">Read More</div>
+                            <div class="submit-button"><a href="{{route('subcategory-post',$service->post->first()->id )}} " class="text-decoration-none text-white">Read More</a></div>
                         </div>
                     </div>
 
@@ -87,7 +110,7 @@
         <hr class="p-0 m-0">
     @endforeach
 
-    <div class="container-fluid content_segment" style="background-color: #ffff;">
+    <div class="container-fluid content_segment" id="we-serve" style="background-color: #ffff;">
         <div class="row align-items-center">
             <div class="col-12 col-lg-4">
                 <div class="container-fluid px-4 pt-4" style="background-color:#0f749c; border-radius:10px; ">
@@ -99,7 +122,7 @@
                     </p>
                     <div class="container-fluid m-0 px-0 py-2">
                         <div class="col-12 col-md-5 py-4" style="max-width: 200px;">
-                            <div class="submit-button"><a href="{{ route('contact-us') }}">Hire Us</a></div>
+                            <div class="submit-button"><a href="{{ route('contact-us') }}" class="text-decoration-none text-white">Hire Us</a></div>
                         </div>
                     </div>
                 </div>

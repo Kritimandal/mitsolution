@@ -15,4 +15,8 @@ class Technology extends Model
         'alt_text',
         'tag_id'
     ];
+
+    public function tag(){
+        return $this->belongsTo(tag::class);
+    }
 }

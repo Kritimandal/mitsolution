@@ -1,4 +1,16 @@
 @extends('layouts.frontend-layout.master')
+@section('title')
+    {{ $setting->meta_title }}
+@endsection
+@section('meta_description')
+    <meta name="description" content="{{ $setting->meta_description }} ">
+@endsection
+@section('meta_keywords')
+    <meta name="keyword" content="{{ $setting->meta_keywords }} ">
+@endsection
+@section('title')
+{{$setting->meta_description}}
+@endsection
 @section('content')
     <div class="container-fluid nav-container content_segment" style="min-height: 26vw; padding-top:48px;background:#0F749C">
         <div class="row m-0 p-0 d-flex justify-content-between content-box">
@@ -14,7 +26,7 @@
 
                     <div class="container-fluid m-0 px-0 py-2">
                         <div class="col-12 col-md-5 py-4" style="max-width: 200px;">
-                            <div class="submit-button">Explore All</div>
+                            <div class="submit-button"><a href="#pills-board" class="text-decoration-none text-white">Explore All</a></div>
                         </div>
                     </div>
 
@@ -58,7 +70,7 @@
                 <div class="container-fluid">
                     <div class="row d-flex justify-content-evenly">
                         @foreach ($boardmembers as $boardmember)
-                        @endforeach
+                        
                         <div class="col-11 d-flex justify-content-sm-center col-md-6 col-lg-4 col-xl-3 py-2">
                             <div class="card hover-image">
                                 <div class="imgBx">
@@ -71,7 +83,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        @endforeach
                     </div>
 
                 </div>

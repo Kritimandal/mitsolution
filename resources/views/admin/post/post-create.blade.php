@@ -25,7 +25,7 @@
                             <div class="mb-3">
                                 <label for="title" class="col-form-label">Title:</label>
                                 <input type="text" name="title" class="form-control" id="title"
-                                    placeholder="Branch title" value="{{ old('title') }}">
+                                    placeholder="title" value="{{ old('title') }}">
                                 @if ($errors->has('title'))
                                     <div class="error text-danger">{{ $errors->first('title') }}
                                     </div>
@@ -33,13 +33,41 @@
                             </div>
                             <div class="mb-3">
                                 <label for="description" class="col-form-label">Description:</label>
-                                <input type="text" name="description" class="form-control" id="description"
-                                    placeholder="Branch description" value="{{ old('description') }}">
+                                <textarea id="summernote" name="description"></textarea>
                                 @if ($errors->has('description'))
                                     <div class="error text-danger">{{ $errors->first('description') }}
                                     </div>
                                 @endif
                             </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <label for="meta_title" class="col-form-label">Meta Title:</label>
+                                <input type="text" name="meta_title" class="form-control" id="meta_title"
+                                    placeholder="enter meta title" value="{{ old('meta_title') }}">
+                                @if ($errors->has('meta_title'))
+                                    <div class="error text-danger">{{ $errors->first('meta_title') }}
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="meta_description" class="col-form-label">Meta Description</label>
+                                <input type="text" name="meta_description" class="form-control" id="meta_description"
+                                    placeholder=" enter meta description" value="{{ old('meta_description') }}">
+                                @if ($errors->has('meta_description'))
+                                    <div class="error text-danger">{{ $errors->first('meta_description') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="mb-3 col-12">
+                            <label for="meta_keywords" class="col-form-label">Meta Keywords</label>
+                            <input type="text" name="meta_keywords" class="form-control" id="meta_keywords"
+                                placeholder="enter meta keywords" value="{{ old('meta_keywords') }}">
+                            @if ($errors->has('meta_keywords'))
+                                <div class="error text-danger">{{ $errors->first('meta_keywords') }}
+                                </div>
+                            @endif
                         </div>
                         <div class="row">
                             <div class="mb-3">
@@ -74,7 +102,7 @@
                             <div class="mb-3">
                                 <label for="alt_text" class="col-form-label">Alt Text</label>
                                 <input type="text" name="alt_text" class="form-control" id="alt_text"
-                                    placeholder="Branch alt_text" value="{{ old('alt_text') }}">
+                                    placeholder="alt_text" value="{{ old('alt_text') }}">
                                 @if ($errors->has('alt_text'))
                                     <div class="error text-danger">{{ $errors->first('alt_text') }}
                                     </div>
@@ -101,4 +129,13 @@
             </div>
         </div>
     </div>
+@endsection
+@section('footer')
+    <script>
+        $('#summernote').summernote({
+            placeholder: 'Descreption',
+            tabsize: 3,
+            height: 100
+        });
+    </script>
 @endsection
