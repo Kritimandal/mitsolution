@@ -77,7 +77,7 @@
                                 <td scope="row">{{$key+1}}</td>
                                 <td scope="row">{{$client->name}}</td>
 
-                                <td ><img src="{{asset('images/photos/'.$client->image)}}" alt="{{$client->alt_text}}" height="100"
+                                <td ><img src="{{asset('images/photos/'.$client->image)}}" alt="{{$client->alt_text}}" height="50"
                                     width="100"></td>
 
                                 <td>

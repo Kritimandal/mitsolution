@@ -33,8 +33,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="description" class="col-form-label">Description:</label>
-                                <input type="text" name="description" class="form-control" id="description"
-                                    placeholder="description" value="{{ old('description',$post->description) }}">
+                                <textarea id="summernote" name="description">{{ old('description', $post->description) }}</textarea>
                                 @if ($errors->has('description'))
                                     <div class="error text-danger">{{ $errors->first('description') }}
                                     </div>
@@ -81,9 +80,11 @@
                                 @endif
                             </div>
                             <div class="mb-3">
-                                <label for="status" class="col-form-label">Status:</label>
-                                <input type="text" name="status" class="form-control" id="status"
-                                    placeholder="status" value="{{ old('status',$post->status) }}">
+                                <label for="status" class="col-form-label">Status:</label>   
+                                <select class="form-select" name="status" required aria-label="Default select example">
+                                    <option {{ old("satus", $post->status) == "1"? "selected" : " " }} value="1">Enable</option>
+                                    <option {{ old("status", $post->status) == "0" ? "selected" : " "}} value="0">Disable</option>
+                                </select>
                                 @if ($errors->has('status'))
                                     <div class="error text-danger">{{ $errors->first('status') }}
                                     </div>
@@ -129,4 +130,13 @@
             </div>
         </div>
     </div>
+@endsection
+@section('footer')
+    <script>
+        $('#summernote').summernote({
+            placeholder: 'Description',
+            tabsize: 3,
+            height: 500
+        });
+    </script>
 @endsection

@@ -17,6 +17,6 @@ class Technology extends Model
     ];
 
     public function tag(){
-        return $this->belongsTo(tag::class);
+        return $this->belongsTo(Tag::class);
     }
 }

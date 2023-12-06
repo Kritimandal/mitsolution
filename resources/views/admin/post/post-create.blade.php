@@ -80,9 +80,11 @@
                                 @endif
                             </div>
                             <div class="mb-3">
-                                <label for="status" class="col-form-label">Status:</label>
-                                <input type="text" name="status" class="form-control" id="status"
-                                    placeholder="status" value="{{ old('status') }}">
+                                <label for="status" class="col-form-label">Status:</label>  
+                                <select class="form-select" name="status" required aria-label="Default select example">
+                                    <option value="1" selected>Enable</option>
+                                    <option value="0">Disable</option>
+                                </select>
                                 @if ($errors->has('status'))
                                     <div class="error text-danger">{{ $errors->first('status') }}
                                     </div>
@@ -135,7 +137,7 @@
         $('#summernote').summernote({
             placeholder: 'Descreption',
             tabsize: 3,
-            height: 100
+            height: 500
         });
     </script>
 @endsection

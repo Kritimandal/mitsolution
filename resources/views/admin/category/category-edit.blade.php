@@ -19,7 +19,7 @@
             {{-- add tab --}}
             <div class="tab-pane fade show  active" id="unpaid" role="tabpanel" aria-labelledby="unpaid-tab">
                 <div class="container-fluid p-3">
-                    <form method="POST" action="{{ route('category-update',$setting) }}">
+                    <form method="POST" action="{{ route('category-update',$category) }}">
                         @csrf
                         @method('POST')
                         <div class="mb-3">

@@ -1,6 +1,6 @@
 @extends('layouts.frontend-layout.master')
 
-@section('title') 
+@section('title')
     <meta name="keyword" content="{{ $meta_title }} ">
 @endsection
 @section('meta_description')
@@ -10,7 +10,6 @@
     <meta name="keyword" content="{{ $meta_keywords }} ">
 @endsection
 @section('content')
-
     <div style="padding: 0px;">
         <div class="container-fluid">
             <div class="row d-flex justify-content-evenly">
@@ -22,7 +21,8 @@
                                     src="{{ asset('/images/photos/' . $post->image) }}" alt="{{ $post->alt_text }}">
                             </div>
                             <div class="card-body">
-                                <h5 class="pb-2 pb-md-4 text-justify"><a href="{{route('post', $post->id)}}" class="text-decoration-none">{{ $post->title }}</a></h5>
+                                <h5 class="pb-2 pb-md-4 text-justify"><a href="{{ route('post', $post->id) }}"
+                                        class="text-decoration-none">{{ $post->title }}</a></h5>
                             </div>
                         </div>
                     </div>

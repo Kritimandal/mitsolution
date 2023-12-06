@@ -32,7 +32,7 @@
                                 @endif
                             </div>
                             <div class="mb-3">
-                                <label for="demo_url" class="col-form-label">Demo url:</label>
+                                <label for="demo_url" class="col-form-label">Demo URL:</label>
                                 <input type="text" name="demo_url" class="form-control" id="demo_url"
                                     placeholder=" demo_url" value="{{ old('demo_url') }}">
                                 @if ($errors->has('demo_url'))
@@ -43,9 +43,11 @@
                         </div>
                         <div class="row">
                             <div class="mb-3">
-                                <label for="status" class="col-form-label">Status</label>
-                                <input type="text" name="status" class="form-control" id="status" placeholder=" status"
-                                    value="{{ old('status') }}">
+                                <label for="status" class="col-form-label">Status</label>     
+                                    <select class="form-select" name="status" required aria-label="Default select example">
+                                        <option value="1" selected>Enable</option>
+                                        <option value="0">Disable</option>
+                                    </select>
                                 @if ($errors->has('status'))
                                     <div class="error text-danger">{{ $errors->first('status') }}
                                     </div>

@@ -3,7 +3,7 @@
 @section('content')
     <div class="row px-2 pt-4">
         <span class="h2 px-4 fw-semibold text-center" style="color: #004781;">
-            Project settings
+           Edit Project settings
         </span>
     </div>
     <div class="px-2 px-md-4">
@@ -26,19 +26,19 @@
                             <div class="mb-3">
                                 <label for="name" class="col-form-label">Project Name:</label>
                                 <input type="text" name="name" class="form-control" id="name"
-                                    placeholder="Branch Name" value="{{ old('name', $project->name) }}">
+                                    placeholder="Name" value="{{ old('name', $project->name) }}">
                                 @if ($errors->has('name'))
                                     <div class="error text-danger">{{ $errors->first('name') }}
                                     </div>
                                 @endif
                             </div>
                             <div class="mb-3">
-                                <label for="description" class="col-form-label">Description:</label>
-                                <input type="text" name="description" class="form-control" id="description"
-                                    placeholder="Branch description"
-                                    value="{{ old('description', $project->description) }}">
-                                @if ($errors->has('description'))
-                                    <div class="error text-danger">{{ $errors->first('description') }}
+                                <label for="demo_url" class="col-form-label">Demo URL</label>
+                                <input type="text" name="demo_url" class="form-control" id="demo_url"
+                                    placeholder="description"
+                                    value="{{ old('demo_url', $project->demo_url) }}">
+                                @if ($errors->has('demo_url'))
+                                    <div class="error text-danger">{{ $errors->first('demo_url') }}
                                     </div>
                                 @endif
                             </div>
@@ -46,8 +46,10 @@
                         <div class="row">
                             <div class="mb-3">
                                 <label for="status" class="col-form-label">Status</label>
-                                <input type="text" name="status" class="form-control" id="status" placeholder=" status"
-                                    value="{{ old('status',$project->status ) }}">
+                                <select class="form-select" name="status" required>
+                                    <option {{ old('status', $project->status) == '1' ? 'selected' : '' }} value="1" >Enable</option>
+                                    <option {{ old('status', $project->status) == '0' ? 'selected' : '' }} value="0">Disable</option>
+                                </select>
                                 @if ($errors->has('status'))
                                     <div class="error text-danger">{{ $errors->first('status') }}
                                     </div>
@@ -56,7 +58,7 @@
                             <div class="mb-3">
                                 <label for="priority" class="col-form-label">Priority:</label>
                                 <input type="text" name="priority" class="form-control" id="priority"
-                                    placeholder=" priority" value="{{ old('priority',$project->status) }}">
+                                    placeholder=" priority" value="{{ old('priority', $project->status) }}">
                                 @if ($errors->has('priority'))
                                     <div class="error text-danger">{{ $errors->first('priority') }}
                                     </div>
@@ -76,7 +78,7 @@
                             <div class="mb-3">
                                 <label for="alt_text" class="col-form-label">Alt Text</label>
                                 <input type="text" name="alt_text" class="form-control" id="alt_text"
-                                    placeholder="Branch alt_text" value="{{ old('alt_text', $project->alt_text) }}">
+                                    placeholder="alt_text" value="{{ old('alt_text', $project->alt_text) }}">
                                 @if ($errors->has('alt_text'))
                                     <div class="error text-danger">{{ $errors->first('alt_text') }}
                                     </div>
@@ -86,9 +88,10 @@
                                 <label for="post_id" class="col-form-label">Post Id:</label>
                                 <select class="form-select" name="post_id" required aria-label="Default select example">
                                     @foreach ($posts as $post)
-                                        <option {{ old('post_id', $project->post_id) == $post->id ? 'selected' : '' }} value="{{ $post->id }}">{{ $post->title }}</option>
+                                        <option {{ old('post_id', $project->post_id) == $post->id ? 'selected' : '' }}
+                                            value="{{ $post->id }}">{{ $post->title }}</option>
                                     @endforeach
-        
+
                                 </select>
                                 @if ($errors->has('post_id'))
                                     <div class="error text-danger">{{ $errors->first('post_id') }}

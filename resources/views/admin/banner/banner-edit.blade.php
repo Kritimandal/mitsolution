@@ -66,7 +66,7 @@
                             <label for="category_id" class="col-form-label">Category:</label>
                             <select class="form-select" name="category_id" required aria-label="Default select example">
                                 @foreach ($categories as $category)
-                                    <option {{ old('category_id', $category->category_id) == $category->id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->name }}</option>
+                                    <option {{ old('category_id', $banner->category_id) == $category->id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->name }}</option>
                                 @endforeach
     
                             </select>

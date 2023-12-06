@@ -43,13 +43,13 @@
                             <tr>
                                 <th scope="col" class="text-light" style="background-color:#1d1d1d">SN
                                 </th>
-                                <th scope="col" class="text-light" style="background-color: #515151">Sub Category Name
+                                <th scope="col" class="text-light" style="background-color: #515151">Project Name
                                     </th>
-                                    {{-- <th scope="col" class="text-light" style="background-color: #515151">Category
-                                    </th> --}}
-                                    <th scope="col" class="text-light" style="background-color: #515151">Description
+                                    <th scope="col" class="text-light" style="background-color: #1d1d1d">Category Name
                                     </th>
-                                <th scope="col" class="text-light" style="background-color: #515151">Image
+                                    <th scope="col" class="text-light" style="background-color: #515151">Status
+                                    </th>
+                                <th scope="col" class="text-light" style="background-color: #1d1d1d">Image
                                     </th>
                                     {{-- <th scope="col" class="text-light" style="background-color: #515151">Alt Text
                                     </th> --}}
@@ -82,8 +82,9 @@
                             <tr class=" text-center">
                                 <td scope="row">{{$key+1}}</td>
                                 <td scope="row">{{$project->name}}</td>
-                                {{-- <td scope="row">{{$category->name}}</td> --}}
-                                <td scope="row">{{$project->description}}</td>
+                                <td scope="row">{{$project->post->subcategory->name}}</td>
+                
+                                <td scope="row">{{ $project->status == '1'? 'Enabled': 'Disabled' }}</td>
 
                                 <td ><img src="{{asset('images/photos/'.$project->image)}}" alt="{{$project->alt_text}}" height="100"
                                     width="100"></td>

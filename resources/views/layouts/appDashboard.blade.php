@@ -25,13 +25,13 @@
     <link rel="stylesheet" href="{{ asset('css/jquerry-datepicker.css') }}">
     {{-- demos.css --}}
     <link rel="stylesheet" href="{{ asset('css/demos.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     {{-- jquerry-3.6.0.js --}}
     <script src="{{ asset('js/jquerry-3.6.0.js') }}"></script>
     {{-- jquery-ui.js --}}
     <script src="{{ asset('js/jquery-ui.js') }}"></script>
-    <!-- include summernote css/js -->
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
     <style>
         .custom-dropdown .dropdown-toggle::after {

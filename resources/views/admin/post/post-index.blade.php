@@ -44,18 +44,16 @@
                             <tr>
                                 <th scope="col" class="text-light" style="background-color:#1d1d1d">SN
                                 </th>
-                                <th scope="col" class="text-light" style="background-color: #515151">post Name
+                                <th scope="col" class="text-light" style="background-color: #515151">Title
                                 </th>
-                                <th scope="col" class="text-light" style="background-color: #1d1d1d">Sub Category
+                                <th scope="col" class="text-light" style="background-color: #1d1d1d">Subcategory
                                 </th>
-                                
-                                <th scope="col" class="text-light" style="background-color: #515151">Description
-                                </th>
+
                                 <th scope="col" class="text-light" style="background-color: #1d1d1d">Meta Title
                                 </th>
                                 <th scope="col" class="text-light" style="background-color: #515151">Meta Keyword
                                 </th>
-                                <th scope="col" class="text-light" style="background-color: #1d1d1d">Meta description
+                                <th scope="col" class="text-light" style="background-color: #1d1d1d">Meta Description
                                 </th>
                                 <th scope="col" class="text-light" style="background-color: #515151">Image
                                 </th>
@@ -88,12 +86,12 @@
                                     <td scope="row">{{ $key + 1 }}</td>
                                     <td scope="row">{{ Str::limit($post->title, 20) }}</td>
                                     <td scope="row">{{ $post->SubCategory->name }}</td>
-                                    <td scope="row">{{ Str::limit($post->description, 30) }}</td>
+
                                     <td scope="row">{{ Str::limit($post->meta_title, 20) }}</td>
                                     <td scope="row">{{ Str::limit($post->meta_keywords, 30) }}</td>
                                     <td scope="row">{{ Str::limit($post->meta_description, 30) }}</td>
-                                    <td><img src="{{ asset('images/photos/' . $post->image) }}" alt="{{ $post->alt_text }}"
-                                            height="100" width="100"></td>
+                                    <td><img src="{{ asset('images/photos/' . $post->image) }}"
+                                            alt="{{ $post->alt_text }}" height="100" width="100"></td>
 
 
                                     {{-- <td scope="row">{{$post->content}}</td> --}}

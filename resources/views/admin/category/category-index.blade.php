@@ -51,7 +51,12 @@
                                 </th>
                                 <th scope="col" class="text-light" style="background-color: #515151">Category Name
                                 </th>
-
+                                <th scope="col" class="text-light" style="background-color:#1d1d1d">Meta Description
+                                </th>
+                                <th scope="col" class="text-light" style="background-color: #515151">Meta Keywords
+                                </th>
+                                <th scope="col" class="text-light" style="background-color:#1d1d1d">Meta Description
+                                </th>
                                 <th scope="col" class="text-light" style="background-color:#1d1d1d">
                                     Action</th>
                             </tr>
@@ -78,17 +83,20 @@
                                 <tr class=" text-center">
                                     <td scope="row">{{ $key + 1 }}</td>
                                     <td scope="row">{{ $category->name }}</td>
+                                    <td scope="row">{{ $category->meta_title }}</td>
+                                    <td scope="row">{{ Str::limit($category->meta_description, 20) }}</td>
+                                    <td scope="row">{{ Str::limit($category->meta_keywords, 20) }}</td>
                                     <td scope="row">
                                         <div class="container-fluid justify-content-between">
 
 
-                                            <a class="mx-2" href="{{ route('category-edit', $category) }}">
-                                                <div class="btn blue_button sized"><i
+                                            <a class="mx-2 " href="{{ route('category-edit', $category) }}">
+                                                <div class="btn blue_button btn-sm mb-2"><i
                                                         class='bx bx-message-square-edit'></i>edit
                                                 </div>
                                             </a>
                                             <a class="mx-2" href="{{ route('category-delete', $category) }}">
-                                                <div class="btn btn-danger sized"><i
+                                                <div class="btn btn-danger btn-sm "><i
                                                         class='bx bx-message-square-edit'></i>Delete
                                                 </div>
                                             </a>

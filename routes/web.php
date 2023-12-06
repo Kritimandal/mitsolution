@@ -45,7 +45,7 @@ Route::group(["middleware" => "auth"], function () {
     Route::post('/setting-store', [App\Http\Controllers\SettingController::class, 'store'])->name('setting-store');
     Route::get('/setting-edit/{setting}', [App\Http\Controllers\SettingController::class, 'edit'])->name('setting-edit');
     Route::post('/setting-update/{setting}', [App\Http\Controllers\SettingController::class, 'update'])->name('setting-update');
-    Route::post('/setting-delete/{setting}', [App\Http\Controllers\SettingController::class, 'destroy'])->name('setting-delete');
+    Route::get('/setting-delete/{setting}', [App\Http\Controllers\SettingController::class, 'destroy'])->name('setting-delete');
 
     // for client
     Route::get('/client-create', [App\Http\Controllers\ClientController::class, 'create'])->name('client-create');
@@ -53,7 +53,7 @@ Route::group(["middleware" => "auth"], function () {
     Route::post('/client-store', [App\Http\Controllers\ClientController::class, 'store'])->name('client-store');
     Route::get('/client-edit/{client}', [App\Http\Controllers\ClientController::class, 'edit'])->name('client-edit');
     Route::post('/client-update/{client}', [App\Http\Controllers\ClientController::class, 'update'])->name('client-update');
-    Route::post('/client-delete/{client}', [App\Http\Controllers\ClientController::class, 'destroy'])->name('client-delete');
+    Route::get('/client-delete/{client}', [App\Http\Controllers\ClientController::class, 'destroy'])->name('client-delete');
 
     // for contact
     Route::get('/contact-create', [App\Http\Controllers\ContactController::class, 'create'])->name('contact-create');
@@ -61,7 +61,7 @@ Route::group(["middleware" => "auth"], function () {
     
     Route::get('/contact-edit/{contact}', [App\Http\Controllers\ContactController::class, 'edit'])->name('contact-edit');
     Route::post('/contact-update/{contact}', [App\Http\Controllers\ContactController::class, 'update'])->name('contact-update');
-    Route::post('/contact-delete/{contact}', [App\Http\Controllers\ContactController::class, 'destroy'])->name('contact-delete');
+    Route::get('/contact-delete/{contact}', [App\Http\Controllers\ContactController::class, 'destroy'])->name('contact-delete');
 
     // for category
     Route::get('/category-create', [App\Http\Controllers\CategoryController::class, 'create'])->name('category-create');
@@ -69,7 +69,7 @@ Route::group(["middleware" => "auth"], function () {
     Route::post('/category-store', [App\Http\Controllers\CategoryController::class, 'store'])->name('category-store');
     Route::get('/category-edit/{category}', [App\Http\Controllers\CategoryController::class, 'edit'])->name('category-edit');
     Route::post('/category-update/{category}', [App\Http\Controllers\CategoryController::class, 'update'])->name('category-update');
-    Route::post('/category-delete/{category}', [App\Http\Controllers\CategoryController::class, 'destroy'])->name('category-delete');
+    Route::get('/category-delete/{category}', [App\Http\Controllers\CategoryController::class, 'destroy'])->name('category-delete');
 
     // for banner
     Route::get('/banner-create', [App\Http\Controllers\BannerController::class, 'create'])->name('banner-create');
@@ -77,7 +77,7 @@ Route::group(["middleware" => "auth"], function () {
     Route::post('/banner-store', [App\Http\Controllers\BannerController::class, 'store'])->name('banner-store');
     Route::get('/banner-edit/{banner}', [App\Http\Controllers\BannerController::class, 'edit'])->name('banner-edit');
     Route::post('/banner-update/{banner}', [App\Http\Controllers\BannerController::class, 'update'])->name('banner-update');
-    Route::post('/banner-delete/{banner}', [App\Http\Controllers\BannerController::class, 'destroy'])->name('banner-delete');
+    Route::get('/banner-delete/{banner}', [App\Http\Controllers\BannerController::class, 'destroy'])->name('banner-delete');
 
     // for post
     Route::get('/post-create', [App\Http\Controllers\PostController::class, 'create'])->name('post-create');
@@ -85,7 +85,7 @@ Route::group(["middleware" => "auth"], function () {
     Route::post('/post-store', [App\Http\Controllers\PostController::class, 'store'])->name('post-store');
     Route::get('/post-edit/{post}', [App\Http\Controllers\PostController::class, 'edit'])->name('post-edit');
     Route::post('/post-update/{post}', [App\Http\Controllers\PostController::class, 'update'])->name('post-update');
-    Route::post('/post-delete/{post}', [App\Http\Controllers\PostController::class, 'destroy'])->name('post-delete');
+    Route::get('/post-delete/{post}', [App\Http\Controllers\PostController::class, 'destroy'])->name('post-delete');
 
     // for subcategory
     Route::get('/subcategory-create', [App\Http\Controllers\SubCategoryController::class, 'create'])->name('subcategory-create');
@@ -93,7 +93,7 @@ Route::group(["middleware" => "auth"], function () {
     Route::post('/subcategory-store', [App\Http\Controllers\SubCategoryController::class, 'store'])->name('subcategory-store');
     Route::get('/subcategory-edit/{subCategory}', [App\Http\Controllers\SubCategoryController::class, 'edit'])->name('subcategory-edit');
     Route::post('/subcategory-update/{subCategory}', [App\Http\Controllers\SubCategoryController::class, 'update'])->name('subcategory-update');
-    Route::post('/subcategory-delete/{subCategory}', [App\Http\Controllers\SubCategoryController::class, 'destroy'])->name('subcategory-delete');
+    Route::get('/subcategory-delete/{subCategory}', [App\Http\Controllers\SubCategoryController::class, 'destroy'])->name('subcategory-delete');
 
     // for testimonial
     Route::get('/testimonial-create', [App\Http\Controllers\TestimonialController::class, 'create'])->name('testimonial-create');
@@ -101,7 +101,7 @@ Route::group(["middleware" => "auth"], function () {
     Route::post('/testimonial-store', [App\Http\Controllers\TestimonialController::class, 'store'])->name('testimonial-store');
     Route::get('/testimonial-edit/{testimonial}', [App\Http\Controllers\TestimonialController::class, 'edit'])->name('testimonial-edit');
     Route::post('/testimonial-update/{testimonial}', [App\Http\Controllers\TestimonialController::class, 'update'])->name('testimonial-update');
-    Route::post('/testimonial-delete/{testimonial}', [App\Http\Controllers\TestimonialController::class, 'destroy'])->name('testimonial-delete');
+    Route::get('/testimonial-delete/{testimonial}', [App\Http\Controllers\TestimonialController::class, 'destroy'])->name('testimonial-delete');
     
     // for boardmember
     Route::get('/boardmember-create', [App\Http\Controllers\BoardMemberController::class, 'create'])->name('boardmember-create');
@@ -109,28 +109,28 @@ Route::group(["middleware" => "auth"], function () {
     Route::post('/boardmember-store', [App\Http\Controllers\BoardMemberController::class, 'store'])->name('boardmember-store');
     Route::get('/boardmember-edit/{boardMember}', [App\Http\Controllers\BoardMemberController::class, 'edit'])->name('boardmember-edit');
     Route::post('/boardmember-update/{boardMember}', [App\Http\Controllers\BoardMemberController::class, 'update'])->name('boardmember-update');
-    Route::post('/boardmember-delete/{boardMember}', [App\Http\Controllers\BoardMemberController::class, 'destroy'])->name('boardmember-delete');
+    Route::get('/boardmember-delete/{boardMember}', [App\Http\Controllers\BoardMemberController::class, 'destroy'])->name('boardmember-delete');
     
     Route::get('/technology-create', [App\Http\Controllers\TechnologyController::class, 'create'])->name('technology-create');
     Route::get('/technology-index', [App\Http\Controllers\TechnologyController::class, 'index'])->name('technology-index');
     Route::post('/technology-store', [App\Http\Controllers\TechnologyController::class, 'store'])->name('technology-store');
     Route::get('/technology-edit/{technology}', [App\Http\Controllers\TechnologyController::class, 'edit'])->name('technology-edit');
     Route::post('/technology-update/{technology}', [App\Http\Controllers\TechnologyController::class, 'update'])->name('technology-update');
-    Route::post('/technology-delete/{technology}', [App\Http\Controllers\TechnologyController::class, 'destroy'])->name('technology-delete');
+    Route::get('/technology-delete/{technology}', [App\Http\Controllers\TechnologyController::class, 'destroy'])->name('technology-delete');
 
     Route::get('/project-create', [App\Http\Controllers\ProjectsController::class, 'create'])->name('project-create');
     Route::get('/project-index', [App\Http\Controllers\ProjectsController::class, 'index'])->name('project-index');
     Route::post('/project-store', [App\Http\Controllers\ProjectsController::class, 'store'])->name('project-store');
     Route::get('/project-edit/{project}', [App\Http\Controllers\ProjectsController::class, 'edit'])->name('project-edit');
     Route::post('/project-update/{project}', [App\Http\Controllers\ProjectsController::class, 'update'])->name('project-update');
-    Route::post('/project-delete/{project}', [App\Http\Controllers\ProjectsController::class, 'destroy'])->name('project-delete');
+    Route::get('/project-delete/{project}', [App\Http\Controllers\ProjectsController::class, 'destroy'])->name('project-delete');
 
     Route::get('/tag-create', [App\Http\Controllers\TagController::class, 'create'])->name('tag-create');
     Route::get('/tag-index', [App\Http\Controllers\TagController::class, 'index'])->name('tag-index');
     Route::post('/tag-store', [App\Http\Controllers\TagController::class, 'store'])->name('tag-store');
     Route::get('/tag-edit/{tag}', [App\Http\Controllers\TagController::class, 'edit'])->name('tag-edit');
     Route::post('/tag-update/{tag}', [App\Http\Controllers\TagController::class, 'update'])->name('tag-update');
-    Route::post('/tag-delete/{tag}', [App\Http\Controllers\TagController::class, 'destroy'])->name('tag-delete');
+    Route::get('/tag-delete/{tag}', [App\Http\Controllers\TagController::class, 'destroy'])->name('tag-delete');
 
     Route::get('/application-index', [App\Http\Controllers\ApplicationController::class, 'index'])->name('application-index');
     Route::get('/application-delete', [App\Http\Controllers\ApplicationController::class, 'destroy'])->name('application-delete');

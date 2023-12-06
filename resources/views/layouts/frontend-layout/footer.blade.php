@@ -13,12 +13,15 @@
                         <div
                             class="container-fluid d-flex justify-content-start justify-content-md-center pt-3 pt-sw-0">
                             <div class="col-4 d-flex justify-content-evenly">
-                                <a class="btn btn-primary" style="background-color: #3b5998;" href="{{ $setting->facebook_link }}" target="_blank"
-                                    role="button"><i class="fa-brands fa-facebook" style="color: white;"></i></a>
-                                <a class="btn btn-primary" style="background-color: #55acee;" href="{{ $setting->twitter_link}}" target="_blank"
-                                    role="button"><i class="fa-brands fa-twitter" style="color: white;"></i></a>
-                                <a class="btn btn-primary" style="background-color: #dd4b39;" href="{{ $setting->linkedin }}" target="_blank"
-                                    role="button"><i class="fa-brands fa-linkedin" style="color: white;"></i></a>
+                                <a class="btn btn-primary" style="background-color: #3b5998;"
+                                    href="{{ $setting->facebook_link }}" target="_blank" role="button"><i
+                                        class="fa-brands fa-facebook" style="color: white;"></i></a>
+                                <a class="btn btn-primary" style="background-color: #55acee;"
+                                    href="{{ $setting->twitter_link }}" target="_blank" role="button"><i
+                                        class="fa-brands fa-twitter" style="color: white;"></i></a>
+                                <a class="btn btn-primary" style="background-color: #dd4b39;"
+                                    href="{{ $setting->linkedin }}" target="_blank" role="button"><i
+                                        class="fa-brands fa-linkedin" style="color: white;"></i></a>
 
                             </div>
                         </div>
@@ -30,27 +33,34 @@
                 <div class="row">
                     <div class="col-12 col-sm-4">
                         <h4 class="text-light pt-2 pt-sm-0">Industries</h4><br>
-                        <p class="text-light"><a class="text-decoration-none text-light" href="#">Fintech</a></p>
-                        <p class="text-light"><a class="text-decoration-none text-light" href="#">Core Banking
-                                Support</a></p>
-                        <p class="text-light"><a class="text-decoration-none text-light" href="#">IS Audit</a></p>
-                        <p class="text-light"><a class="text-decoration-none text-light" href="#">Office
-                                Automation</a></p>
-                        <p class="text-light"><a class="text-decoration-none text-light" href="#">Aviation</a></p>
+                        {{-- @php
+                            dd($subcategory1);
+                        @endphp --}}
+                        @foreach ($subcategory1 as $subcategory)
+                        <p class="text-light"><a class="text-decoration-none text-light" href="{{ isset($subcategory->post->first()->id) ? route('subcategory-post', $subcategory->post->first()->id) : '#' }}">{{$subcategory->name}}</a></p>
+                    @endforeach
+                        {{-- // <p class="text-light"><a class="text-decoration-none text-light" href="#">Fintech</a></p>
+                        // <p class="text-light"><a class="text-decoration-none text-light" href="#">Core Banking
+                        //         Support</a></p>
+                        // <p class="text-light"><a class="text-decoration-none text-light" href="#">IS Audit</a></p>
+                        // <p class="text-light"><a class="text-decoration-none text-light" href="#">Office
+                        //         Automation</a></p>
+                        // <p class="text-light"><a class="text-decoration-none text-light" href="#">Aviation</a></p> --}}
 
                     </div>
                     <div class="col-12 col-sm-4">
                         <h4 class="text-light  pt-2 pt-sm-0">Services</h4><br>
-                        <p class="text-light"><a class="text-decoration-none text-light" href="#">Web
-                                Development</a></p>
-                        <p class="text-light"><a class="text-decoration-none text-light" href="#">IT
+                        @foreach ($subcategory2 as $subcategory)
+                            <p class="text-light"><a class="text-decoration-none text-light" href="{{ isset($subcategory->post->first()->id) ? route('subcategory-post', $subcategory->post->first()->id) : '#' }}">{{$subcategory->name}}</a></p>
+                        @endforeach
+                        {{-- <p class="text-light"><a class="text-decoration-none text-light" href="#">IT
                                 Consulting</a></p>
                         <p class="text-light"><a class="text-decoration-none text-light" href="#">System
                                 Development</a></p>
                         <p class="text-light"><a class="text-decoration-none text-light" href="#">Web
                                 Designing</a></p>
                         <p class="text-light"><a class="text-decoration-none text-light" href="#">QA and
-                                Testing</a></p>
+                                Testing</a></p> --}}
 
                     </div>
                     <div class="col-12 col-sm-4">
@@ -73,14 +83,14 @@
                             <div class="col-3 text-lg-end">
                                 <h3><i class="fa-solid fa-phone" style="color: #ff555a;"></i></h3>
                             </div>
-                            <div class="col-9 text-lg-start pt-2">{{ $setting->site_phone_number}}</div>
+                            <div class="col-9 text-lg-start pt-2">{{ $setting->site_phone_number }}</div>
                         </div>
                         <p></p>
                         <div class="row">
                             <div class="col-3 text-lg-end">
                                 <h3><i class="fa-solid fa-envelope" style="color: #ff555a;"></i></h3>
                             </div>
-                            <div class="col-9 text-lg-start pt-2">{{ $setting->site_email}}</div>
+                            <div class="col-9 text-lg-start pt-2">{{ $setting->site_email }}</div>
                         </div>
                     </div>
                 </div>

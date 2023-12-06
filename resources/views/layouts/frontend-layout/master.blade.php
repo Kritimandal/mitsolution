@@ -19,12 +19,14 @@
     <title> @yield('title', 'MIT Solution') </title>
         
 </head>
+<body class="m-0 p-0" style=" margin:0px; padding:0px; min-height: 45vw; background-image: url('{{ asset('images/medias/new-banner.png') }}'); " cz-shortcut-listen="true">
 
-<body>
-    <header class="header-wrapper">
+    <header>
         @include('layouts.frontend-layout.nav')
     </header>
+    <main class="m-0 p-0">
         @yield('content')
+    </main>
         @include('layouts.frontend-layout.footer')
   
 

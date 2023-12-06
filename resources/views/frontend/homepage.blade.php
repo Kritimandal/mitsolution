@@ -1,17 +1,17 @@
 @extends('layouts.frontend-layout.master')
 @section('title')
-    {{ $setting->meta_title }}
+    {{ $banner->category->meta_title }}
 @endsection
 @section('meta_description')
-    <meta name="description" content="{{ $setting->meta_description }} ">
+    <meta name="description" content="{{ $banner->category->meta_description }} ">
 @endsection
 @section('meta_keywords')
-    <meta name="keyword" content="{{ $setting->meta_keywords }} ">
+    <meta name="keyword" content="{{ $banner->category->meta_keywords }} ">
 @endsection
 @section('content')
     {{-- banner section --}}
 
-    <div class="container-fluid nav-container content_segment" style="min-height: 26vw; padding-top:48px;background:#0F749C">
+    <div class="container-fluid nav-container content_segment" style="min-height: 26vw; padding-top:48px;">
         <div class="row m-0 p-0 d-flex justify-content-between content-box">
             <div class="col-md-12 col-xxl-7 col-xl-8 col-lg-7">
                 <label for="">
@@ -25,8 +25,10 @@
 
                     <div class="container-fluid m-0 px-0 py-2">
                         <div class="col-12 col-md-5 py-4" style="max-width: 200px;">
-                            <div class="submit-button"><a href="#our-solution" class="text-decoration-none text-white">
-                                    Explore All</a></div>
+                            <a href="#our-solution" class="text-decoration-none text-white">
+                                <div class="submit-button">
+                                    Explore All</div>
+                            </a>
                         </div>
                     </div>
 
@@ -38,7 +40,8 @@
                 <div class="container-fluid px-lg-0 pl-xl-5 px-xl-0 px-xxl-3">
                     <div class="container-fluid px-lg-0 pl-xl-5 px-xl-0 px-xxl-3">
                         <img src="{{ asset('/images/photos/' . $banner->image) }}"
-                            class="img-fluid float-end pl-lg-0 pl-xl-5 px-xl-0 px-xxl-5 py-xxl-3" alt="">
+                            class="img-fluid float-end pl-lg-0 pl-xl-5 px-xl-0 px-xxl-5 py-xxl-3"
+                            alt="{{ $banner->alt_text }}">
                     </div>
                 </div>
 
@@ -230,7 +233,7 @@
 
                                                 <div
                                                     class="col-12 col-xl-5 d-flex justify-content-end p-0 m-0 d-flex justify-content-center justify-content-xl-end pb-1 pb-xl-0 ">
-                                                    <a href="{{ route('post', $project->post) }}"
+                                                    <a href=" {{ isset($project->post) ? route('post', $project->post) : '#' }}"
                                                         class="text-decoration-none p-0 m-0">
                                                         <div class="btn align-items-center refrence-button">
                                                             <h5 class="text-light">About</h5>
@@ -275,160 +278,172 @@
 
     {{-- our testimonial section --}}
 
-    <section class="testimonial-section wrapper">
-        <div class="container ">
-            <div class="row">
-                <div class="col-6">
 
-                    <h2>Testimonials</h2>
-                    <p class="text-dark">See What Our Customer Say About Us</p>
+    <div class="container ">
+        <div class="row">
+            <div class="col-6">
 
-                </div>
-                <div class="col-6 d-flex justify-content-end">
-                    <div class="container-fluid d-flex justify-content-end">
-                        <button class="carousel-control-prev-top px-4" type="button" data-bs-target="#testimonials"
-                            data-bs-slide="prev">
-                            <h5 class="circle-icon"> <i class="fa-solid fa-arrow-left"></i></h5>
-                        </button>
-                        <button class="carousel-control-next-top px-4" type="button" data-bs-target="#testimonials"
-                            data-bs-slide="next">
-                            <h5 class="circle-icon"> <i class="fa-solid fa-arrow-right"></i></h5>
-                        </button>
-                    </div>
+                <h2>Testimonials</h2>
+                <p class="text-dark">See What Our Customer Say About Us</p>
+
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+                <div class="container-fluid d-flex justify-content-end">
+                    <button class="carousel-control-prev-top px-4" type="button" data-bs-target="#testimonials"
+                        data-bs-slide="prev">
+                        <h5 class="circle-icon"> <i class="fa-solid fa-arrow-left"></i></h5>
+                    </button>
+                    <button class="carousel-control-next-top px-4" type="button" data-bs-target="#testimonials"
+                        data-bs-slide="next">
+                        <h5 class="circle-icon"> <i class="fa-solid fa-arrow-right"></i></h5>
+                    </button>
                 </div>
             </div>
+        </div>
 
-            <div id="testimonials" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
-                <div class="carousel-inner">
-                    <div class="carousel-item active" data-bs-interval="3000">
-                        <div class="row justify-content-center">
-                            @foreach ($testimonials as $testimonial)
-                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 p-2">
-                                    <div class="card client-card border border-0" style="height:100%;">
-                                        <p>{{ $testimonial->content }}</p>
-                                        <div class="row align-items-center">
-                                            <div class="col-3 p-3">
-                                                <div class="avatar"
-                                                    style="width: 60px !important; height: 60px !important;">
-                                                    <img src="https://mitsolution.com.np/images/person1.png"
-                                                        class="img-fluid" alt="{{ $testimonial->alt_text }}">
-                                                </div>
+        <div id="testimonials" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="3000">
+                    <div class="row justify-content-center">
+                        @foreach ($testimonials as $testimonial)
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 p-2">
+                                <div class="card client-card border border-0" style="height:100%;">
+                                    <p>{{ $testimonial->content }}</p>
+                                    <div class="row align-items-center">
+                                        <div class="col-3 p-3">
+                                            <div class="avatar" style="width: 60px !important; height: 60px !important;">
+                                                <img src="{{ isset($testimonial->image) ? asset('/images/photos/' . $testimonial->image) : asset('/images/medias/mitsolution-logo.png') }}"
+                                                    class="img-fluid" alt="{{ $testimonial->alt_text }}">
                                             </div>
-                                            <div class="col-9 fw-semibold text-dark">{{ $testimonial->name }}
-                                                <br>
-                                                <span
-                                                    class="text-secondary fw-normal">{{ $testimonial->designation }}</span><br>
+                                        </div>
+                                        <div class="col-9 fw-semibold text-dark">{{ $testimonial->name }}
+                                            <br>
+                                            <span
+                                                class="text-secondary fw-normal">{{ $testimonial->designation }}</span><br>
+                                            @php
+                                                $counter = 1;
+                                            @endphp
+
+                                            @while ($counter <= $testimonial->rating)
                                                 <i class="fa-solid fa-star" style="color: #ffa41c"></i>
-                                                <i class="fa-solid fa-star" style="color: #ffa41c"></i>
-                                                <i class="fa-solid fa-star" style="color: #ffa41c"></i>
-                                                <i class="fa-solid fa-star" style="color: #ffa41c"></i>
-                                                <i class="fa-solid fa-star-half-stroke" style="color: #ffa41c"></i>
-                                            </div>
+                                                @php
+                                                    $counter++;
+                                                @endphp
+                                            @endwhile
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="carousel-item" data-bs-interval="3000">
-                        <div class="row justify-content-center">
-                            @foreach ($testimonials2 as $testimonial)
-                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 p-2">
-                                    <div class="card client-card border border-0" style="height:100%;">
-                                        <p>Thank You for your service. I am very pleased
-                                            with the result. I have seen exponencial growth
-                                            in my business and its all thanks to your
-                                            amazing service</p>
-                                        <div class="row align-items-center">
-                                            <div class="col-3 p-3">
-                                                <div class="avatar"
-                                                    style="width: 60px !important; height: 60px !important;">
-                                                    <img src="https://mitsolution.com.np/images/person1.png"
-                                                        class="img-fluid" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="col-9 fw-semibold text-dark">Ram Krishna Shrestha
-                                                <br>
-                                                <span class="text-secondary fw-normal">CEO Nepal Company</span><br>
-                                                <i class="fa-solid fa-star" style="color: #ffa41c"></i>
-                                                <i class="fa-solid fa-star" style="color: #ffa41c"></i>
-                                                <i class="fa-solid fa-star" style="color: #ffa41c"></i>
-                                                <i class="fa-solid fa-star" style="color: #ffa41c"></i>
-                                                <i class="fa-solid fa-star-half-stroke" style="color: #ffa41c"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                            @endforeach
-                        </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
 
+                <div class="carousel-item" data-bs-interval="3000">
+                    <div class="row justify-content-center">
+                        @foreach ($testimonials2 as $testimonial)
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 p-2">
+                                <div class="card client-card border border-0" style="height:100%;">
+                                    <p>{{ $testimonial->content }}</p>
+                                    <div class="row align-items-center">
+                                        <div class="col-3 p-3">
+                                            <div class="avatar" style="width: 60px !important; height: 60px !important;">
+                                                <img src="{{ isset($testimonial->image) ? asset('/images/photos/' . $testimonial->image) : asset('/images/medias/mitsolution-logo.png') }}"
+                                                    class="img-fluid" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-9 fw-semibold text-dark">{{ $testimonial->name }}
+                                            <br>
+                                            <span
+                                                class="text-secondary fw-normal">{{ $testimonial->designation }}</span><br>
+                                            @php
+                                                $counter = 1;
+                                            @endphp
+
+                                            @while ($counter <= $testimonial->rating)
+                                                <i class="fa-solid fa-star" style="color: #ffa41c"></i>
+                                                @php
+                                                    $counter++;
+                                                @endphp
+                                            @endwhile
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+
+                    </div>
+                </div>
+
+
             </div>
         </div>
-    </section>
+    </div>
+
 
     {{-- end our testimonial section --}}
 
     {{-- our clients section --}}
 
-    <section class="client-section wrapper">
-        <div class="container ">
 
-            <h2>Happy Clients</h2>
+    <div class="container ">
 
-            <div id="happy_clients" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
-                <div class="carousel-inner">
+        <h2>Happy Clients</h2>
 
-                    <div class="carousel-item" data-bs-interval="3000">
-                        <div class="row align-items-center d-flex justify-content-evenly">
-                            @foreach ($clients as $client)
-                                <div class="col-4 col-xl-2 p-2">
-                                    <div class="card client-card border border-0 d-flex justify-content-center"
-                                        style="max-height: 100px; min-height: 100px; ">
-                                        <img src="{{ asset('images/photos/' . $client->image) }}" alt=""
-                                            style="object-fit: contain; height: 85px;">
-                                    </div>
-                                    <div class="container-fluid">
-                                        <h6 class="text-center text-secondary">{{ $client->name }}</h6>
-                                    </div>
+        <div id="happy_clients" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+            <div class="carousel-inner">
+
+                <div class="carousel-item" data-bs-interval="3000">
+                    <div class="row align-items-center d-flex justify-content-evenly">
+                        @foreach ($clients as $client)
+                            <div class="col-4 col-xl-2 p-2">
+                                <div class="card client-card border border-0 d-flex justify-content-center"
+                                    style="max-height: 100px; min-height: 100px; ">
+                                    <img src="{{ isset($client->image) ? asset('/images/photos/' . $client->image) : asset('/images/medias/mitsolution-logo.png') }}"
+                                        alt="" style="object-fit: contain; height: 85px;">
                                 </div>
-                            @endforeach
-                        </div>
-
-
+                                <div class="container-fluid">
+                                    <h6 class="text-center text-secondary">{{ $client->name }}</h6>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
-                    <div class="carousel-item active" data-bs-interval="3000">
-                        <div class="row align-items-center d-flex justify-content-evenly">
-                            @foreach ($clients2 as $client)
-                                <div class="col-4 col-xl-2 p-2">
-                                    <div class="card client-card border border-0 d-flex justify-content-center"
-                                        style="max-height: 100px; min-height: 100px; ">
-                                        <img src="{{ asset('images/photos/' . $client->image) }}" alt=""
-                                            style="object-fit: contain; height: 85px;">
-                                    </div>
-                                    <div class="container-fluid">
-                                        <h6 class="text-center text-secondary">{{ $client->name }}</h6>
-                                    </div>
-                                </div>
-                            @endforeach
 
-                        </div>
+
+                </div>
+
+                <div class="carousel-item active" data-bs-interval="3000">
+                    <div class="row align-items-center d-flex justify-content-evenly">
+                        @foreach ($clients2 as $client)
+                            <div class="col-4 col-xl-2 p-2">
+                                <div class="card client-card border border-0 d-flex justify-content-center"
+                                    style="max-height: 100px; min-height: 100px; ">
+                                    <img src="{{ isset($client->image) ? asset('/images/photos/' . $client->image) : asset('/images/medias/mitsolution-logo.png') }}"
+                                        alt="" style="object-fit: contain; height: 85px;">
+                                </div>
+                                <div class="container-fluid">
+                                    <h6 class="text-center text-secondary">{{ $client->name }}</h6>
+                                </div>
+                            </div>
+                        @endforeach
+
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#happy_clients"
-                    data-bs-slide="prev">
-                    <h4 class="circle-icon"> <i class="fa-solid fa-arrow-left"></i></h4>
-
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#happy_clients"
-                    data-bs-slide="next">
-                    <h4 class="circle-icon"> <i class="fa-solid fa-arrow-right"></i></h4>
-
-                </button>
 
             </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#happy_clients" data-bs-slide="prev">
+                <h4 class="circle-icon"> <i class="fa-solid fa-arrow-left"></i></h4>
+
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#happy_clients" data-bs-slide="next">
+                <h4 class="circle-icon"> <i class="fa-solid fa-arrow-right"></i></h4>
+
+            </button>
+
         </div>
-    </section>
+    </div>
+
 
 
 
