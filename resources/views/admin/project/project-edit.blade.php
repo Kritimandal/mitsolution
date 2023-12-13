@@ -8,10 +8,7 @@
     </div>
     <div class="px-2 px-md-4">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
-            {{-- <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="unpaid-tab" data-bs-toggle="tab" data-bs-target="#unpaid" type="button"
-                    role="tab" aria-controls="unpaid" aria-selected="true">Add Client Settings</button>
-            </li> --}}
+          
             <a href="{{ route('project-index') }}" class="text-decoration-none"><button class="nav-link">View
                     Project Section Settings</button></a>
         </ul>
@@ -24,6 +21,7 @@
                         @method('POST')
                         <div class="row">
                             <div class="mb-3">
+                                
                                 <label for="name" class="col-form-label">Project Name:</label>
                                 <input type="text" name="name" class="form-control" id="name"
                                     placeholder="Name" value="{{ old('name', $project->name) }}">

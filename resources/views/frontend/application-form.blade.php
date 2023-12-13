@@ -54,32 +54,55 @@
                     <label id="apply" for="name" class="text-dark h5">Full Name</label>
                     <input type="text" class="form-control" name="name" id="name" aria-describedby="emailHelp"
                         placeholder="Enter Your Full Name" required>
-
+                        @if ($errors->has('name'))
+                        <div class="error text-danger">{{ $errors->first('name') }}
+                        </div>
+                    @endif
                     <br>
                     <label for="email" class="text-dark h5">Email</label>
                     <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp"
                         placeholder="Enter your email" required>
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                         else.</small>
+                    @if ($errors->has('email'))
+                        <div class="error text-danger">{{ $errors->first('email') }}
+                        </div>
+                    @endif
                     <br>
                     <label for="phone_no" class="text-dark h5">Phone Number</label>
                     <input type="text" class="form-control" id="phone_no" name="phone_no" aria-describedby="emailHelp"
                         placeholder="Enter your email" required>
                     <small id="emailHelp" class="form-text text-muted">We'll never share your phone number with anyone
-                        else.</small><br>
+                        else.</small>
+                    @if ($errors->has('phone_no'))
+                        <div class="error text-danger">{{ $errors->first('phone_no') }}
+                        </div>
+                    @endif
+                    <br>
                     <label for="position" class="text-dark h5">Position</label>
                     <input type="text" class="form-control text-dark h5" name="position" id="position"
                         aria-describedby="emailHelp" placeholder="Enter job position" required>
-
+                    @if ($errors->has('position'))
+                        <div class="error text-danger">{{ $errors->first('position') }}
+                        </div>
+                    @endif
                     <label for="resume" class="text-dark h5">Upload Resume: </label>
 
                     <input type="file" name="resume" class="form-control text-dark h5" id="resume"
                         placeholder="resume" value="" required>
                     <span class="text-muted">Upload resume in ms word or pdf format only.</span>
+                    @if ($errors->has('resume'))
+                        <div class="error text-danger">{{ $errors->first('resume') }}
+                        </div>
+                    @endif
                     <br>
 
                     <label for="message " class="text-dark h5">Message</label>
                     <textarea class="form-control" name="message" id="message" rows="3"></textarea>
+                    @if ($errors->has('message'))
+                        <div class="error text-danger">{{ $errors->first('message') }}
+                        </div>
+                    @endif
                     <div class="container-fluid m-0 px-0 py-2 ">
                         <div class="col-12 col-md-5 py-4" style="max-width: 200px;">
                             <button type="submit" class="submit-button">Send Application</button>

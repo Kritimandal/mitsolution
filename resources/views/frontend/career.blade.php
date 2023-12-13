@@ -9,7 +9,7 @@
     <meta name="keyword" content="{{ $banner->category->meta_keywords }} ">
 @endsection
 @section('content')
-    <div class="container-fluid nav-container content_segment" style="min-height: 26vw; padding-top:48px;">
+    <div class="container-fluid nav-container content_segment" style="min-height: 26vw; margin-top:25px;">
         <div class="row m-0 p-0 d-flex justify-content-between content-box">
             <div class="col-md-12 col-xxl-7 col-xl-8 col-lg-7">
                 <label for="">
@@ -45,7 +45,7 @@
     </div>
 
     <div class="container-fluid content_segment">
-        <h4>Benifits</h4>
+        <h2>Benefits</h2>
         <h5 class="text-dark mb-4">Why You should Join Our Awsome Team</h5>
         <div class="row">
             <div class="col-12 col-lg-6 d-none d-lg-block d-flex align-items-center">
@@ -66,14 +66,13 @@
                             </div>
                         </div>
                     @endforeach
-
                 </div>
             </div>
         </div>
     </div>
 
     <div class="container-fluid content_segment" id="join" style="background-color: #f8f8f8;">
-        <h4>How To Join?</h4>
+        <h2>How To Join?</h2>
         <div class="row px-3 justify-content-center">
             @foreach ($joins as $join)
                 <div class="col-6 col-md-4 col-lg-3 pb-3 pb-lg-2">
@@ -95,7 +94,7 @@
                                 style="background-color: white; border:0;">
                                 <a href="{{ route('application-create') }}">
                                     <div class="btn" style="color: white; background-color:#ff555a; margin-bottom:-26px">
-                                        Drop your Cv</div>
+                                        Drop your CV</div>
                                 </a>
                             </div>
                         </div>

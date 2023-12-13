@@ -41,7 +41,7 @@ class TechnologyController extends Controller
         if ($request->image) {
             $data = $request->validate([
                 "name" => ["required", "string"],
-                "image" => ["required"],
+                "image" => ["required","image"],
                 "alt_text" => ["nullable", "string"],
                 "tag_id" =>["required"]
 
@@ -85,7 +85,7 @@ class TechnologyController extends Controller
         if ($request->image) {
             $data = $request->validate([
                 "name" => ["required", "string"],
-                "image" => ["required"],
+                "image" => ["required","image"],
                 "alt_text" => ["nullable", "string"],
                 "tag_id" =>["required"]
 

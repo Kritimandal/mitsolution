@@ -10,7 +10,7 @@
 @endsection
 @section('content')
 
-<div class="container-fluid nav-container content_segment" style="min-height: 26vw; padding-top:48px;">
+<div class="container-fluid nav-container content_segment" style="min-height: 26vw; margin-top:48px;">
     <div class="row m-0 p-0 d-flex justify-content-between content-box">
         <div class="col-md-12 col-xxl-7 col-xl-8 col-lg-7">
             <label  for="">

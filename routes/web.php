@@ -32,13 +32,13 @@ Route::get('/careers', [App\Http\Controllers\FrontendController::class, 'career'
 Route::get('/post/{post}', [App\Http\Controllers\FrontendController::class, 'post'])->name('post');
 Route::get('/application-create', [App\Http\Controllers\ApplicationController::class, 'create'])->name('application-create');
 Route::post('/application-store', [App\Http\Controllers\ApplicationController::class, 'store'])->name('application-store');
-Route::get('/subcategory-post/{post}', [App\Http\Controllers\FrontendController::class, 'categorypost'])->name('subcategory-post');
+Route::get('/subcategory-post/{subCategory}', [App\Http\Controllers\FrontendController::class, 'categorypost'])->name('subcategory-post');
 
 
 Route::group(["middleware" => "auth"], function () {
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+   
     // for setting
     Route::get('/setting-create', [App\Http\Controllers\SettingController::class, 'create'])->name('setting-create');
     Route::get('/setting-index', [App\Http\Controllers\SettingController::class, 'index'])->name('setting-index');
@@ -122,8 +122,8 @@ Route::group(["middleware" => "auth"], function () {
     Route::get('/project-index', [App\Http\Controllers\ProjectsController::class, 'index'])->name('project-index');
     Route::post('/project-store', [App\Http\Controllers\ProjectsController::class, 'store'])->name('project-store');
     Route::get('/project-edit/{project}', [App\Http\Controllers\ProjectsController::class, 'edit'])->name('project-edit');
-    Route::post('/project-update/{project}', [App\Http\Controllers\ProjectsController::class, 'update'])->name('project-update');
-    Route::get('/project-delete/{project}', [App\Http\Controllers\ProjectsController::class, 'destroy'])->name('project-delete');
+    Route::post('/project-update/{projects}', [App\Http\Controllers\ProjectsController::class, 'update'])->name('project-update');
+    Route::get('/project-delete/{projects}', [App\Http\Controllers\ProjectsController::class, 'destroy'])->name('project-delete');
 
     Route::get('/tag-create', [App\Http\Controllers\TagController::class, 'create'])->name('tag-create');
     Route::get('/tag-index', [App\Http\Controllers\TagController::class, 'index'])->name('tag-index');

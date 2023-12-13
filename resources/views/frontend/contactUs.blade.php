@@ -9,7 +9,7 @@
     <meta name="keyword" content="{{ $banner->category->meta_keywords }} ">
 @endsection
 @section('content')
-    <div class="container-fluid nav-container content_segment" style="min-height: 26vw; padding-top:48px;">
+    <div class="container-fluid nav-container content_segment" style="min-height: 26vw; margin-top:48px;">
         <div class="row m-0 p-0 d-flex justify-content-between content-box">
             <div class="col-md-12 col-xxl-7 col-xl-8 col-lg-7">
                 <label for="">
@@ -50,24 +50,40 @@
                 <h2 class="text-center p-2">Contact Us</h2>
                 <form action="/contact-store" method="POST">
                     @csrf
-                    <label id="contact" for="name" class="text-dark h5">Name</label>
-                    <input type="text" class="form-control" name="name" id="name" aria-describedby="emailHelp"
+                    <label id="name" for="name" class="text-dark h5">Name</label>
+                    <input type="text" class="form-control" name="name" id="name" aria-describedby="name"
                         placeholder="Enter Your Name">
-
+                        @if ($errors->has('name'))
+                        <div class="error text-danger">{{ $errors->first('name') }}
+                        </div>
+                    @endif
                     <br>
                     <label for="email" class="text-dark h5">Email</label>
-                    <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp"
+                    <input type="email" class="form-control" name="email" id="email" aria-describedby="email"
                         placeholder="Enter your email">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                    <small id="email" class="form-text text-muted">We'll never share your email with anyone
                         else.</small>
+                        @if ($errors->has('email'))
+                        <div class="error text-danger">{{ $errors->first('email') }}
+                        </div>
+                    @endif
                     <br><br>
-                    <label for="phone_no" class="text-dark h5">Phone Number</label>
-                    <input type="text" class="form-control" name="phone_number" id="phone_no"
-                        aria-describedby="emailHelp" placeholder="Enter your email">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your phone number with anyone
-                        else.</small><br><br>
+                    <label for="phone_number" class="text-dark h5">Phone Number</label>
+                    <input type="text" class="form-control" name="phone_number" id="phone_number"
+                        aria-describedby="phone_number" placeholder="Enter your phone number">
+                    <small id="phone_number" class="form-text text-muted">We'll never share your phone number with anyone
+                        else.</small>
+                        @if ($errors->has('phone_number'))
+                        <div class="error text-danger">{{ $errors->first('phone_number') }}
+                        </div>
+                    @endif
+                        <br><br>
                     <label for="message" class="text-dark h5">Message</label>
                     <textarea class="form-control" name="message" id="message" rows="3"></textarea>
+                    @if ($errors->has('message'))
+                    <div class="error text-danger">{{ $errors->first('message') }}
+                    </div>
+                @endif
                     <div class="container-fluid m-0 px-0 py-2 ">
                         <div class="col-12 col-md-5 py-4" style="max-width: 200px;">
                             <button type="submit" class="submit-button">Contact Us</button>

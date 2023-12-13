@@ -37,30 +37,21 @@
                             dd($subcategory1);
                         @endphp --}}
                         @foreach ($subcategory1 as $subcategory)
-                        <p class="text-light"><a class="text-decoration-none text-light" href="{{ isset($subcategory->post->first()->id) ? route('subcategory-post', $subcategory->post->first()->id) : '#' }}">{{$subcategory->name}}</a></p>
-                    @endforeach
-                        {{-- // <p class="text-light"><a class="text-decoration-none text-light" href="#">Fintech</a></p>
-                        // <p class="text-light"><a class="text-decoration-none text-light" href="#">Core Banking
-                        //         Support</a></p>
-                        // <p class="text-light"><a class="text-decoration-none text-light" href="#">IS Audit</a></p>
-                        // <p class="text-light"><a class="text-decoration-none text-light" href="#">Office
-                        //         Automation</a></p>
-                        // <p class="text-light"><a class="text-decoration-none text-light" href="#">Aviation</a></p> --}}
+                            <p class="text-light"><a class="text-decoration-none text-light"
+                                    href="{{ isset($subcategory->post->first()->id) ? route('subcategory-post', $subcategory->post->first()->id) : '#' }}">{{ $subcategory->name }}</a>
+                            </p>
+                        @endforeach
+
 
                     </div>
                     <div class="col-12 col-sm-4">
                         <h4 class="text-light  pt-2 pt-sm-0">Services</h4><br>
                         @foreach ($subcategory2 as $subcategory)
-                            <p class="text-light"><a class="text-decoration-none text-light" href="{{ isset($subcategory->post->first()->id) ? route('subcategory-post', $subcategory->post->first()->id) : '#' }}">{{$subcategory->name}}</a></p>
+                            <p class="text-light"><a class="text-decoration-none text-light"
+                                    href="{{ isset($subcategory->post->first()->id) ? route('subcategory-post', $subcategory->post->first()->id) : '#' }}">{{ $subcategory->name }}</a>
+                            </p>
                         @endforeach
-                        {{-- <p class="text-light"><a class="text-decoration-none text-light" href="#">IT
-                                Consulting</a></p>
-                        <p class="text-light"><a class="text-decoration-none text-light" href="#">System
-                                Development</a></p>
-                        <p class="text-light"><a class="text-decoration-none text-light" href="#">Web
-                                Designing</a></p>
-                        <p class="text-light"><a class="text-decoration-none text-light" href="#">QA and
-                                Testing</a></p> --}}
+
 
                     </div>
                     <div class="col-12 col-sm-4">

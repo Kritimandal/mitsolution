@@ -23,6 +23,7 @@
                         @csrf
                         <div class="row">
                             <div class="mb-3">
+                                <p class="lead text-info">Create a post about the project before creating the project.</p>
                                 <label for="name" class="col-form-label">Project Name:</label>
                                 <input type="text" name="name" class="form-control" id="name" placeholder=" Name"
                                     value="{{ old('name') }}">
@@ -67,7 +68,7 @@
                             <div class="mb-3 col-6">
                                 <label for="image" class="col-form-label">Image:</label>
                                 <input type="file" name="image" class="form-control" id="image"
-                                    placeholder="post image" value="{{ old('image') }}">
+                                    placeholder="recommended size: 1000 X 980 px" value="{{ old('image') }}">
                                 @if ($errors->has('image'))
                                     <div class="error text-danger">{{ $errors->first('image') }}
                                     </div>

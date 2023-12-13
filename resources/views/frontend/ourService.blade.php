@@ -9,7 +9,7 @@
     <meta name="keyword" content="{{ $banner->category->meta_keywords }} ">
 @endsection
 @section('content')
-    <div class="container-fluid nav-container content_segment" style="min-height: 26vw; padding-top:48px;">
+    <div class="container-fluid nav-container content_segment" style="min-height: 26vw; margin-top:48px;">
         <div class="row m-0 p-0 d-flex justify-content-between content-box">
             <div class="col-md-12 col-xxl-7 col-xl-8 col-lg-7">
                 <label for="">
@@ -57,9 +57,9 @@
                         <div class="container-fluid m-0 px-0 py-2">
                             <div class="col-12 col-md-5 py-4" style="max-width: 200px;">
                                
-                                <div class="submit-button"><a
-                                        href="{{ isset($service->post->first()->id) ? route('subcategory-post', $service->post->first()->id) : '#' }} "
-                                        class="text-decoration-none text-white">Read More</a></div>
+                                <a
+                                href="{{ isset($service->post->first()->slug) ? route('subcategory-post', $service->id) : '#' }} "
+                                class="text-decoration-none text-white"> <div class="submit-button">Read More</div></a>
                             </div>
                         </div>
 
@@ -89,9 +89,9 @@
                         <p class="main-p text-dark">{{ $service->description }}</p>
                         <div class="container-fluid m-0 px-0 py-2">
                             <div class="col-12 col-md-5 py-4" style="max-width: 200px;">
-                                <div class="submit-button"><a
-                                        href="{{ isset($service->post->first()->id) ? route('subcategory-post', $service->post->first()->id) : '#' }} "
-                                        class="text-decoration-none text-white">Read More</a></div>
+                                <a
+                                href="{{ isset($service->post->first()->slug) ? route('subcategory-post', $service->post->first()) : '#' }} "
+                                class="text-decoration-none text-white"> <div class="submit-button">Read More</div></a>
                             </div>
                         </div>
 
@@ -114,8 +114,8 @@
                     </p> --}}
                     <div class="container-fluid m-0 px-0 py-2">
                         <div class="col-12 col-md-5 py-4" style="max-width: 200px;">
-                            <div class="submit-button"><a href="{{ route('contact-us') }}"
-                                    class="text-decoration-none text-white">Hire Us</a></div>
+                            <a href="{{ route('contact-us') }}"
+                            class="text-decoration-none text-white"> <div class="submit-button">Hire Us</div></a>
                         </div>
                     </div>
                 </div>

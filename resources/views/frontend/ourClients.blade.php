@@ -9,7 +9,7 @@
     <meta name="keyword" content="{{ $banner->category->meta_keywords }} ">
 @endsection
 @section('content')
-    <div class="container-fluid nav-container content_segment" style="min-height: 26vw; padding-top:48px;">
+    <div class="container-fluid nav-container content_segment" style="min-height: 26vw; margin-top:48px;">
         <div class="row m-0 p-0 d-flex justify-content-between content-box">
             <div class="col-md-12 col-xxl-7 col-xl-8 col-lg-7">
                 <label for="">
@@ -45,7 +45,7 @@
         </div>
     </div>
     <div class="container-fluid py-4" style="padding-left: 8%;  padding-right:8%;" id="trusted-by">
-        <h3>Trusted By Companies Including:</h3>
+        <h2>Trusted By Companies Including:</h2>
         <div class="row align-items-center d-flex justify-content-evenly">
             @foreach ($clients as $client)
             <div class="col-4 col-xl-2 p-2">

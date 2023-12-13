@@ -35,6 +35,7 @@ class FrontendController extends Controller
         $technologies3 = Technology::where('tag_id', 3)->get();
         $technologies4 = Technology::where('tag_id', 4)->get();
         $projects = Projects::where('status', 1)->get();
+        $project1 = $projects->shift();
         return view('frontend.homepage', [
             "banner" => $banner,
             "testimonials" => $testimonials,
@@ -46,6 +47,7 @@ class FrontendController extends Controller
             "technologies2" => $technologies2,
             "technologies3" => $technologies3,
             "technologies4" => $technologies4,
+            "project1" => $project1,
             "projects" => $projects,
             "setting" => $setting,
 
@@ -138,13 +140,13 @@ class FrontendController extends Controller
             abort(404);
         }
     }
-    public function categorypost(Post $post)
+    public function categorypost(SubCategory $subCategory)
     {
         $setting = Setting::first();
-        $meta_title = $post->SubCategory->category->meta_title;
-        $meta_keywords = $post->SubCategory->category->meta_keywords;
-        $meta_description = $post->SubCategory->category->meta_description;
-        $posts = Post::where('sub_category_id', $post->sub_category_id)
+        $meta_title = $subCategory->category->meta_title;
+        $meta_keywords = $subCategory->category->meta_keywords;
+        $meta_description = $subCategory->category->meta_description;
+        $posts = Post::where('sub_category_id', $subCategory->id)
             ->where('status', '1')
             ->orderBy('priority')
             ->take(6)

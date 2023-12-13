@@ -93,7 +93,7 @@ class PostController extends Controller
                 "meta_title" => ["required", "string"],
                 "meta_description" => ["required", "string"],
                 "meta_keywords" => ["required", "string"],
-                "image" => ["required"],
+                "image" => ["required","image","dimensions:min_width=700,min_height=400,max_width=1100,max_height=800"],
                 "status" => ["required"],
                 "priority" => ["required"],
                 "alt_text" => ["nullable", "string"],

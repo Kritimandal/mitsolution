@@ -11,7 +11,7 @@
 @section('content')
     {{-- banner section --}}
 
-    <div class="container-fluid nav-container content_segment" style="min-height: 26vw; padding-top:48px;">
+    <div class="container-fluid nav-container content_segment" style="min-height: 26vw; margin-top:0px;">
         <div class="row m-0 p-0 d-flex justify-content-between content-box">
             <div class="col-md-12 col-xxl-7 col-xl-8 col-lg-7">
                 <label for="">
@@ -211,18 +211,56 @@
 
     <div class="container-fluid content_segment">
         <h2>Our Projects</h2>
-        <div class="container-fluid p-0 m-0"
-            style=" background-image:url('{{ asset('images/medias/project-banner.png') }}'); background-size: fit; background-repeat: no-repeat; min-height:315px">
+        <div class="container-fluid p-0 m-0 project-bg"
+            style=" background-image:url('{{ asset('images/medias/project-banner.png') }}'); background-size: fit; background-repeat: no-repeat; ">
             <div id="carouselExampleControls" class="carousel slide " data-bs-ride="carousel">
                 <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="90000">
+                        <div class="container-fluid px-0 px-lg-5">
+                            <div class="row px-2 px-md-5 d-flex justify-content-between align-items-center ">
+                                <div class="col-sm-8 col-md-9 col-xl-6 p-0 m-0 d-flex align-items-center" style="min-height:500px;">
+                                    <div class="container-fluid" style="margin:auto">
+                                        <img src="{{ asset('images/photos/' . $project1->image) }}" class="img-fluid"
+                                            alt="{{$project1->alt_text}}">
+                                    </div>
+                                </div>
+                                <div
+                                    class="col-sm-4 col-md-3 col-xl-5 p-0 m-0 d-flex justify-content-center align-items-center ">
+                                    <div class="container-fluid p-0 m-0">
+                                        <h2 class="text-center text-white"> {{ $project1->name }}</h2>
+                                        <div class="row d-flex justify-content-center p-0 m-0">
+
+                                            <div
+                                                class="col-12 col-xl-5 d-flex justify-content-end p-0 m-0 d-flex justify-content-center justify-content-xl-end pb-1 pb-xl-0 ">
+                                                <a href=" {{ isset($project1->post) ? route('post', $project1->post) : '#' }}"
+                                                    class="text-decoration-none p-0 m-0">
+                                                    <div class="btn align-items-center refrence-button">
+                                                        <h5 class="text-light">About</h5>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div
+                                                class="col-12 col-xl-7 p-0 m-0 d-flex justify-content-center justify-content-xl-start">
+                                                <a href="{{ $project1->demo_url }}" class="text-decoration-none">
+                                                    <div class="btn align-items-center  refrence-button">
+                                                        <h5 class="text-light">Site Extension</h5>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     @foreach ($projects as $project)
-                        <div class="carousel-item active" data-bs-interval="90000">
+                        <div class="carousel-item" data-bs-interval="90000">
                             <div class="container-fluid px-0 px-lg-5">
                                 <div class="row px-2 px-md-5 d-flex justify-content-between align-items-center">
-                                    <div class="col-sm-8 col-md-9 col-xl-6 p-0 m-0">
-                                        <div class="container-fluid">
+                                    <div class="col-sm-8 col-md-9 col-xl-6 p-0 m-0 d-flex align-items-center project" style="min-height:500px!important;">
+                                        <div class="container-fluid" style="margin:auto">
                                             <img src="{{ asset('images/photos/' . $project->image) }}" class="img-fluid"
-                                                alt="">
+                                                alt="{{$project->alt_text}}">
                                         </div>
                                     </div>
                                     <div
@@ -443,9 +481,5 @@
 
         </div>
     </div>
-
-
-
-
     {{-- end our clients section --}}
 @endsection

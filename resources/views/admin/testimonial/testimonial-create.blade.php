@@ -46,7 +46,7 @@
                             <div class="mb-3 col-6">
                                 <label for="image" class="col-form-label">Image:</label>
                                 <input type="file" name="image" class="form-control" id="image"
-                                    placeholder="Category image" value="{{ old('image') }}">
+                                    placeholder="Recommended Image size: 220 X 261" value="{{ old('image') }}">
                                 @if ($errors->has('image'))
                                     <div class="error text-danger">{{ $errors->first('image') }}
                                     </div>

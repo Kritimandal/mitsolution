@@ -104,7 +104,7 @@
                             <div class="mb-3 col-6">
                                 <label for="site_logo" class="col-form-label">Logo :</label>
                                 <input type="file" name="site_logo" class="form-control" id="logo"
-                                    placeholder="Logo" value="{{ old('site_logo') }}">
+                                    placeholder="682 X 110" value="{{ old('site_logo') }}">
                                 @if ($errors->has('site_logo'))
                                     <div class="error text-danger">{{ $errors->first('site_logo') }}
                                     </div>

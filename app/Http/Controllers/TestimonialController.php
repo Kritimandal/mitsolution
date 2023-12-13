@@ -40,10 +40,10 @@ class TestimonialController extends Controller
             $data = $request->validate([
                 "name" => ["required", "string"],
                 "designation" => ["required", "string"],
-                "image" => ["required"],
+                "image" => ["required","image","dimensions:min_width=200,min_height=241,max_width=220,max_height=261"],
                 "alt_text" => ["nullable", "string"],
                 "content" => ["required", "string"],
-                "rating" => ["required"],
+                "rating" => ["required", "in:0,1,2,3,4,5" ],
 
             ]);
             $image = $request->file('image');
@@ -84,10 +84,10 @@ class TestimonialController extends Controller
             $data = $request->validate([
                 "name" => ["required", "string"],
                 "designation" => ["required", "string"],
-                "image" => ["required"],
+                "image" =>  ["required","image","dimensions:min_width=200,min_height=241,max_width=220,max_height=261"],
                 "alt_text" => ["nullable", "string"],
                 "content" => ["required", "string"],
-                "rating" => ["required"],
+                "rating" => ["required", "in:0,1,2,3,4,5" ],
 
             ]);
             $image = $request->file('image');
@@ -102,7 +102,7 @@ class TestimonialController extends Controller
                 "designation" => ["required", "string"],
                 "alt_text" => ["nullable", "string"],
                 "content" => ["required", "string"],
-                "rating" => ["required"],
+                "rating" => ["required", "in:0,1,2,3,4,5" ],
 
             ]);
         }
