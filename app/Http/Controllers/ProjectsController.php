@@ -43,7 +43,7 @@ class ProjectsController extends Controller
             $data = $request->validate([
                 "name" => ["required", "string"],
                 "demo_url" => ["required", "string"],
-                "image" => ["required","image","dimensions:min_width=700,min_height=700,max_width=1100,max_height=980"],
+                "image" => ["required","image"],
                 "priority" => ["required"],
                 "post_id" => ["required"],
                 "status" => ["required"],
@@ -90,7 +90,7 @@ class ProjectsController extends Controller
             $data = $request->validate([
                 "name" => ["required", "string"],
                 "demo_url" => ["required", "string"],
-                "image" => ["required","image","dimensions:min_width=700,min_height=700,max_width=1100,max_height=980"],
+                "image" => ["required","image"],
                 "priority" => ["required"],
                 "post_id" => ["required"],
                 "status" => ["required"],

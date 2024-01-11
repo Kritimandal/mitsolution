@@ -142,6 +142,7 @@ class FrontendController extends Controller
     }
     public function categorypost(SubCategory $subCategory)
     {
+       
         $setting = Setting::first();
         $meta_title = $subCategory->category->meta_title;
         $meta_keywords = $subCategory->category->meta_keywords;

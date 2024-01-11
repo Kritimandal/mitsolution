@@ -70,7 +70,7 @@
                             @endif
                         </div>
                         <div class="row">
-                            <div class="mb-3">
+                            <div class="col-6 mb-3">
                                 <label for="priority" class="col-form-label">Priority</label>
                                 <input type="text" name="priority" class="form-control" id="priority"
                                     placeholder="priority" value="{{ old('priority') }}">
@@ -79,7 +79,7 @@
                                     </div>
                                 @endif
                             </div>
-                            <div class="mb-3">
+                            <div class="col-6 mb-3">
                                 <label for="status" class="col-form-label">Status:</label>  
                                 <select class="form-select" name="status" required aria-label="Default select example">
                                     <option value="1" selected>Enable</option>
@@ -101,7 +101,7 @@
                                     </div>
                                 @endif
                             </div>
-                            <div class="mb-3">
+                            <div class="col-6 mb-3">
                                 <label for="alt_text" class="col-form-label">Alt Text</label>
                                 <input type="text" name="alt_text" class="form-control" id="alt_text"
                                     placeholder="alt_text" value="{{ old('alt_text') }}">
@@ -111,7 +111,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="mb-3">
+                        <div class="col-6 mb-3">
                             <label for="sub_category_id" class="col-form-label">Sub Category:</label>
                             <select class="form-select" name="sub_category_id" required aria-label="Default select example">
                                 @foreach ($subcategory as $subcat)
@@ -124,7 +124,15 @@
                                 </div>
                             @endif
                         </div>
-
+                        <div class="col-6 mb-3">
+                            <label for="slug" class="col-form-label">Title:</label>
+                            <input type="text" name="slug" class="form-control" id="slug"
+                                placeholder="slug" value="{{ old('slug') }}">
+                            @if ($errors->has('slug'))
+                                <div class="error text-danger">{{ $errors->first('slug') }}
+                                </div>
+                            @endif
+                        </div>
                         <button type="submit" class="btn blue_button">Add</button>
                     </form>
                 </div>

@@ -3,17 +3,17 @@
 @section('content')
     <div class="row px-2 pt-4">
         <span class="h2 px-4 fw-semibold text-center" style="color: #004781;">
-            Client Section settings
+            Post Section settings
         </span>
     </div>
     <div class="px-2 px-md-4">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             {{-- <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="unpaid-tab" data-bs-toggle="tab" data-bs-target="#unpaid" type="button"
-                    role="tab" aria-controls="unpaid" aria-selected="true">Add Client Settings</button>
+                    role="tab" aria-controls="unpaid" aria-selected="true">Add Post Settings</button>
             </li> --}}
             <a href="{{ route('post-index') }}" class="text-decoration-none"><button class="nav-link">View
-                    Client Section Settings</button></a>
+                    Post Section Settings</button></a>
         </ul>
         <div class="tab-content py-2 navsTabsShadow" id="myTabContent">
             {{-- add tab --}}
@@ -121,6 +121,15 @@
                             </select>
                             @if ($errors->has('category_id'))
                                 <div class="error text-danger">{{ $errors->first('category_id') }}
+                                </div>
+                            @endif
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="slug" class="col-form-label">Slug</label>
+                            <input type="text" name="slug" class="form-control" id="slug"
+                                placeholder="slug" value="{{ old('slug', $post->slug) }}">
+                            @if ($errors->has('slug'))
+                                <div class="error text-danger">{{ $errors->first('slug') }}
                                 </div>
                             @endif
                         </div>

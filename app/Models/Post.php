@@ -20,7 +20,8 @@ class Post extends Model
         'image',
         'alt_text',
         'priority',
-        'sub_category_id'
+        'sub_category_id',
+        
     ];
     public function getRouteKeyName()
     {

@@ -49,20 +49,21 @@
         <!-- changed margin here -->
         <div class="container-fluid">
             <ul class="nav nav-pills leaders-navs nav-justified" id="pills-tab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="pills-board-tab" data-bs-toggle="pill" data-bs-target="#pills-board"
-                        type="button" role="tab" aria-controls="pills-board" aria-selected="true"
-                        style="border-radius: 0; color: white;">Board Of Directors</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-our-team-tab" data-bs-toggle="pill" data-bs-target="#pills-our-team"
+                 <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pills-our-team-tab" data-bs-toggle="pill" data-bs-target="#pills-our-team"
                         type="button" role="tab" aria-controls="pills-our-team" aria-selected="false"
-                        style="border-radius: 0; color: white;" tabindex="-1">Our Team</button>
+                        style="border-radius: 0; color: white;" >Our Team</button>
                 </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link " id="pills-board-tab" data-bs-toggle="pill" data-bs-target="#pills-board"
+                        type="button" role="tab" aria-controls="pills-board" aria-selected="true"
+                        style="border-radius: 0; color: white;" tabindex="-1">Board Of Directors</button>
+                </li>
+               
             </ul>
         </div>
         <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-board" role="tabpanel" aria-labelledby="pills-board-tab"
+            <div class="tab-pane fade " id="pills-board" role="tabpanel" aria-labelledby="pills-board-tab"
                 style="padding: 0px;">
                 <div class="container-fluid">
                     <div class="row d-flex justify-content-evenly">
@@ -86,12 +87,12 @@
                 </div>
 
             </div>
-            <div class="tab-pane fade" id="pills-our-team" role="tabpanel" aria-labelledby="pills-our-team-tab">
+            <div class="tab-pane fade show active" id="pills-our-team" role="tabpanel" aria-labelledby="pills-our-team-tab">
                 <div class="container-fluid px-5 py-2" style="background-color: #f8f8f8">
 
                     <div class="row px-3">
                         @foreach ($teams as $team)
-                            <div class="col-4 py-3">
+                            <div class="col-6 col-md-4 py-3">
                                 <div class="card our-team-card py-4">
                                     <div class="container-fluid text-center">
                                         <div class="container-fluid aspect-ratio-1x1 d-flex justify-content-center">
@@ -108,8 +109,6 @@
                                 </div>
                             </div>
                         @endforeach
-                       
-
                     </div>
                 </div>
             </div>

@@ -211,8 +211,8 @@
 
     <div class="container-fluid content_segment">
         <h2>Our Projects</h2>
-        <div class="container-fluid p-0 m-0 project-bg"
-            style=" background-image:url('{{ asset('images/medias/project-banner.png') }}'); background-size: fit; background-repeat: no-repeat; ">
+        <div class="container-fluid p-0 m-0"
+            style=" background-image:url('{{ asset('images/medias/project-banner.png') }}'); background-size: fit; background-repeat: no-repeat;">
             <div id="carouselExampleControls" class="carousel slide " data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-bs-interval="90000">
@@ -235,7 +235,7 @@
                                                 <a href=" {{ isset($project1->post) ? route('post', $project1->post) : '#' }}"
                                                     class="text-decoration-none p-0 m-0">
                                                     <div class="btn align-items-center refrence-button">
-                                                        <h5 class="text-light">About</h5>
+                                                        <h5 class="text-light">Read More</h5>
                                                     </div>
                                                 </a>
                                             </div>
@@ -274,7 +274,7 @@
                                                     <a href=" {{ isset($project->post) ? route('post', $project->post) : '#' }}"
                                                         class="text-decoration-none p-0 m-0">
                                                         <div class="btn align-items-center refrence-button">
-                                                            <h5 class="text-light">About</h5>
+                                                            <h5 class="text-light">Read More</h5>
                                                         </div>
                                                     </a>
                                                 </div>

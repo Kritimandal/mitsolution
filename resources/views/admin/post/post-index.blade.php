@@ -48,17 +48,10 @@
                                 </th>
                                 <th scope="col" class="text-light" style="background-color: #1d1d1d">Subcategory
                                 </th>
-
-                                <th scope="col" class="text-light" style="background-color: #1d1d1d">Meta Title
-                                </th>
-                                <th scope="col" class="text-light" style="background-color: #515151">Meta Keyword
-                                </th>
-                                <th scope="col" class="text-light" style="background-color: #1d1d1d">Meta Description
+                                <th scope="col" class="text-light" style="background-color: #1d1d1d">Description
                                 </th>
                                 <th scope="col" class="text-light" style="background-color: #515151">Image
                                 </th>
-
-
                                 <th scope="col" class="text-light" style="background-color:#1d1d1d">
                                     Action</th>
                             </tr>
@@ -86,12 +79,9 @@
                                     <td scope="row">{{ $key + 1 }}</td>
                                     <td scope="row">{{ Str::limit($post->title, 20) }}</td>
                                     <td scope="row">{{ $post->SubCategory->name }}</td>
-
-                                    <td scope="row">{{ Str::limit($post->meta_title, 20) }}</td>
-                                    <td scope="row">{{ Str::limit($post->meta_keywords, 30) }}</td>
-                                    <td scope="row">{{ Str::limit($post->meta_description, 30) }}</td>
-                                    <td><img src="{{ asset('images/photos/' . $post->image) }}"
-                                            alt="{{ $post->alt_text }}" height="100" width="100"></td>
+                                    <td scope="row">{{ Str::limit(strip_tags($post->description), 30) }}</td>
+                                    <td><img src="{{ asset('images/photos/' . $post->image) }}" alt="{{ $post->alt_text }}"
+                                            height="50" width="auto"></td>
 
 
                                     {{-- <td scope="row">{{$post->content}}</td> --}}
@@ -101,12 +91,12 @@
 
 
                                             <a class="mx-2" href="{{ route('post-edit', $post) }}">
-                                                <div class="btn blue_button sized"><i
+                                                <div class="btn blue_button btn-sm"><i
                                                         class='bx bx-message-square-edit'></i>edit
                                                 </div>
                                             </a>
                                             <a class="mx-2" href="{{ route('post-delete', $post) }}">
-                                                <div class="btn btn-danger sized"><i
+                                                <div class="btn btn-danger btn-sm"><i
                                                         class='bx bx-message-square-edit'></i>Delete
                                                 </div>
                                             </a>
