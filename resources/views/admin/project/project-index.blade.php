@@ -86,7 +86,7 @@
                 
                                 <td scope="row">{{ $project->status == '1'? 'Enabled': 'Disabled' }}</td>
 
-                                <td ><img src="{{asset('images/photos/'.$project->image)}}" alt="{{$project->alt_text}}" height="100"
+                                <td ><img src="{{asset('images/photos/'.$project->image)}}" alt="{{$project->alt_text}}" height="auto"
                                     width="100"></td>
 
                                 <td>

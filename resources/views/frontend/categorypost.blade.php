@@ -21,8 +21,14 @@
                                     src="{{ asset('/images/photos/' . $post->image) }}" alt="{{ $post->alt_text }}">
                             </div>
                             <div class="card-body">
-                                <h5 class="pb-2 pb-md-4 text-justify"><a href="{{ route('post', $post) }}"
-                                        class="text-decoration-none">{{ $post->title }}</a></h5>
+                                <h5 class="pb-2 pb-md-2 text-justify"><a href="{{ route('post', $post) }}"
+                                        class="text-decoration-none">{{ $post->title }}</a> </h5> 
+                                        <small>Posted at: {{ $post->updated_at->format('Y F d') }} &nbsp; Reading time:{{ calculateReadingTime($post->description) }} min &nbsp; Share on:<a
+                                            href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('post', $post)) }}&title={{ urlencode($post->title) }}&picture={{ urlencode(asset('/images/photos/' . $post->image)) }}"
+                                            target="_blank"> <i class="fa-brands fa-facebook-f"></i> </a> &nbsp; <a
+                                            href="https://twitter.com/intent/tweet?url={{ urlencode(route('post', $post)) }}&text={{ urlencode($post->title) }}&via=yourTwitterHandle&hashtags=your,hashtags&related=twitterapi,twitter"
+                                            target="_blank"><i class="fa-brands fa-x-twitter"></i></a>  </small>
+                                       
                             </div>
                         </div>
                     </div>

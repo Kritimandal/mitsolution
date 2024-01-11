@@ -46,6 +46,10 @@
         </div>
     </div>
     @foreach ($services as $key => $service)
+    @php
+    $firstpost = $service->post->first();
+    $pageSlug = $firstpost ? route('subcategory-post', $service) : '#';
+@endphp
         @if ($key % 2 != 0)
             <div class="container-fluid content_segment" style="background-color: #f8f8f8;">
                 <div class="row">
@@ -57,8 +61,11 @@
                         <div class="container-fluid m-0 px-0 py-2">
                             <div class="col-12 col-md-5 py-4" style="max-width: 200px;">
                                
-                                <a
+                                {{-- <a
                                 href="{{ isset($service->post->first()->slug) ? route('subcategory-post', $service->id) : '#' }} "
+                                class="text-decoration-none text-white"> <div class="submit-button">Read More</div></a> --}}
+                                <a
+                                href="{{ $pageSlug }} "
                                 class="text-decoration-none text-white"> <div class="submit-button">Read More</div></a>
                             </div>
                         </div>
@@ -89,8 +96,11 @@
                         <p class="main-p text-dark">{{ $service->description }}</p>
                         <div class="container-fluid m-0 px-0 py-2">
                             <div class="col-12 col-md-5 py-4" style="max-width: 200px;">
-                                <a
+                                {{-- <a
                                 href="{{ isset($service->post->first()->slug) ? route('subcategory-post', $service->post->first()) : '#' }} "
+                                class="text-decoration-none text-white"> <div class="submit-button">Read More</div></a> --}}
+                                <a
+                                href="{{ $pageSlug }} "
                                 class="text-decoration-none text-white"> <div class="submit-button">Read More</div></a>
                             </div>
                         </div>

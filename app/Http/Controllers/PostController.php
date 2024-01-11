@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\SubCategory;
+use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -48,7 +49,8 @@ class PostController extends Controller
             "priority" => ["required"],
             "image" => ["required"],
             "alt_text" => ["nullable", "string"],
-            "sub_category_id" => ["required"]
+            "sub_category_id" => ["required"],
+            "slug" => ["required", 'max:255', 'unique:posts']
 
         ]);
         $image = $request->file('image');
@@ -57,7 +59,8 @@ class PostController extends Controller
         $destinationPath = public_path('/images/photos');
         $image->move($destinationPath, $input['image_name']);
         $data['image'] = $input['image_name'];
-
+        $slug = $request->input('slug');
+        $data['slug'] = str_replace(' ', '-', $slug);
         Post::create($data);
         return redirect('/post-index');
     }
@@ -89,11 +92,12 @@ class PostController extends Controller
         if ($request->image) {
             $data = $request->validate([
                 "title" => ["required", "string"],
+                "slug" => ["required", 'max:255',  Rule::unique('posts')->ignore($post->id)],
                 "description" => ["required", "string"],
                 "meta_title" => ["required", "string"],
                 "meta_description" => ["required", "string"],
                 "meta_keywords" => ["required", "string"],
-                "image" => ["required","image","dimensions:min_width=700,min_height=400,max_width=1100,max_height=800"],
+                "image" => ["required","image"],
                 "status" => ["required"],
                 "priority" => ["required"],
                 "alt_text" => ["nullable", "string"],
@@ -106,9 +110,11 @@ class PostController extends Controller
             $destinationPath = public_path('/images/photos');
             $image->move($destinationPath, $input['image_name']);
             $data['image'] = $input['image_name'];
+           
         } else {
             $data = $request->validate([
                 "title" => ["required", "string"],
+                "slug" => ["required", 'max:255',  Rule::unique('posts')->ignore($post->id)],
                 "description" => ["required", "string"],
                 "meta_title" => ["required", "string"],
                 "meta_description" => ["required", "string"],
@@ -120,6 +126,8 @@ class PostController extends Controller
 
             ]);
         }
+        $slug = $request->input('slug');
+        $data['slug'] = str_replace(' ', '-', $slug);
         $post->update($data);
         return redirect('/post-index');
     }
