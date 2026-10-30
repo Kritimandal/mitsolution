@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="row p-0 d-flex justify-content-between  m-0">
             <div class="col-xl-2 py-2 col-sm-3 col-4">
-                <a class="navbar-brand px-3" href="{{ route('homepage') }}"><img src="{{ asset('/images/photos/' . $setting->site_logo) }}"  alt="{{ $setting->site_alt_text }}" width="100%" alt=""></a>
+                <a class="navbar-brand px-3" href="{{ route('homepage') }}"><img src="{{ asset('/images/photos/' . $setting?->site_logo) }}"  alt="{{ $setting?->site_alt_text }}" width="100%" alt=""></a>
 
             </div>
             <div class="col-sm-9 col-8 ">

@@ -1,12 +1,12 @@
 @extends('layouts.frontend-layout.master')
 @section('title')
-    {{ $setting->meta_title }}
+    {{ $setting?->meta_title }}
 @endsection
 @section('meta_description')
-    <meta name="description" content="{{ $setting->meta_description }} ">
+    <meta name="description" content="{{ $setting?->meta_description }} ">
 @endsection
 @section('meta_keywords')
-    <meta name="keyword" content="{{ $setting->meta_keywords }} ">
+    <meta name="keyword" content="{{ $setting?->meta_keywords }} ">
 @endsection
 @section('content')
 

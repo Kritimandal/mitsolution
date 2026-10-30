@@ -6,21 +6,21 @@
             <div class="col-12 col-lg-5">
                 <div class="row">
                     <div class="col-12 col-md-6 col-lg-12">
-                        <img src="{{ asset('/images/photos/' . $setting->site_logo) }}" height="50px" width="350px"
-                            alt="{{ $setting->site_alt_text }}">
+                        <img src="{{ asset('/images/photos/' . $setting?->site_logo) }}" height="50px" width="350px"
+                            alt="{{ $setting?->site_alt_text }}">
                     </div>
                     <div class="col-12 col-md-6 col-lg-12">
                         <div
                             class="container-fluid d-flex justify-content-start justify-content-md-center pt-3 pt-sw-0">
                             <div class="col-4 d-flex justify-content-evenly">
                                 <a class="btn btn-primary" style="background-color: #3b5998;"
-                                    href="{{ $setting->facebook_link }}" target="_blank" role="button"><i
+                                    href="{{ $setting?->facebook_link }}" target="_blank" role="button"><i
                                         class="fa-brands fa-facebook" style="color: white;"></i></a>
                                 <a class="btn btn-primary" style="background-color: #55acee;"
-                                    href="{{ $setting->twitter_link }}" target="_blank" role="button"><i
+                                    href="{{ $setting?->twitter_link }}" target="_blank" role="button"><i
                                         class="fa-brands fa-twitter" style="color: white;"></i></a>
                                 <a class="btn btn-primary" style="background-color: #dd4b39;"
-                                    href="{{ $setting->linkedin }}" target="_blank" role="button"><i
+                                    href="{{ $setting?->linkedin }}" target="_blank" role="button"><i
                                         class="fa-brands fa-linkedin" style="color: white;"></i></a>
 
                             </div>
@@ -65,7 +65,7 @@
                                 <h3><i class="fa-solid fa-house-chimney" style="color: #ff555a;"></i></h3>
                             </div>
                             <div class="col-9 text-lg-start px-4">
-                                <p class="text-light">{!! $setting->site_location !!}</p>
+                                <p class="text-light">{!! $setting?->site_location !!}</p>
                             </div>
                         </div>
                         <p>
@@ -74,14 +74,14 @@
                             <div class="col-3 text-lg-end">
                                 <h3><i class="fa-solid fa-phone" style="color: #ff555a;"></i></h3>
                             </div>
-                            <div class="col-9 text-lg-start pt-2">{{ $setting->site_phone_number }}</div>
+                            <div class="col-9 text-lg-start pt-2">{{ $setting?->site_phone_number }}</div>
                         </div>
                         <p></p>
                         <div class="row">
                             <div class="col-3 text-lg-end">
                                 <h3><i class="fa-solid fa-envelope" style="color: #ff555a;"></i></h3>
                             </div>
-                            <div class="col-9 text-lg-start pt-2">{{ $setting->site_email }}</div>
+                            <div class="col-9 text-lg-start pt-2">{{ $setting?->site_email }}</div>
                         </div>
                     </div>
                 </div>

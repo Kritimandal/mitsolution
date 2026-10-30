@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 //     return view('homepage');
 // });
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/', [App\Http\Controllers\FrontendController::class, 'index'])->name('homepage');
 Route::get('/contact-us', [App\Http\Controllers\FrontendController::class, 'contact'])->name('contact-us');
@@ -133,7 +133,7 @@ Route::group(["middleware" => "auth"], function () {
     Route::get('/tag-delete/{tag}', [App\Http\Controllers\TagController::class, 'destroy'])->name('tag-delete');
 
     Route::get('/application-index', [App\Http\Controllers\ApplicationController::class, 'index'])->name('application-index');
-    Route::get('/application-delete', [App\Http\Controllers\ApplicationController::class, 'destroy'])->name('application-delete');
+    Route::get('/application-delete/{application}', [App\Http\Controllers\ApplicationController::class, 'destroy'])->name('application-delete');
     Route::get('/application-download/{filename}', [App\Http\Controllers\ApplicationController::class, 'download'])->name('application-download');
 
 });
