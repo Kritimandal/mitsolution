@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\FileUploader;
 use App\Models\SubCategory;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
@@ -56,16 +57,11 @@ class SubCategoryController extends Controller
             $data = $request->validate([
                 "name" => ["required", "string"],
                 "description" => ["required"],
-                "image" => ["required", "image"],
+                "image" => ["required", ...FileUploader::IMAGE_RULES],
                 "alt_text" => ["required", "string"],
                 "category_id" => ["required"]
             ]);
-            $image = $request->file('image');
-            $input['image_name'] = "Image-" . date('Ymdhis') . random_int(0, 1234) . "." . $image->getClientOriginalName();
-
-            $destinationPath = public_path('/images/photos');
-            $image->move($destinationPath, $input['image_name']);
-            $data['image'] = $input['image_name'];
+            $data['image'] = FileUploader::storePublicImage($request->file('image'));
         }
 
         SubCategory::create($data);
@@ -90,17 +86,12 @@ class SubCategoryController extends Controller
             $data = $request->validate([
                 "name" => ["required", "string"],
                 "description" => ["required"],
-                "image" => ["required", "image"],
+                "image" => ["required", ...FileUploader::IMAGE_RULES],
                 "alt_text" => ["required", "string"],
                 "category_id" => ["required"]
 
             ]);
-            $image = $request->file('image');
-            $input['image_name'] = "Image-" . date('Ymdhis') . random_int(0, 1234) . "." . $image->getClientOriginalName();
-
-            $destinationPath = public_path('/images/photos');
-            $image->move($destinationPath, $input['image_name']);
-            $data['image'] = $input['image_name'];
+            $data['image'] = FileUploader::storePublicImage($request->file('image'));
         } else {
             $data = $request->validate([
                 "name" => ["required", "string"],

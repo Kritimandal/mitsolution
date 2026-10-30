@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\FileUploader;
 use App\Models\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -39,16 +40,11 @@ class ClientController extends Controller
         //
         $data = $request->validate([
             "name" => ["required", "string"],
-            "image" => ["required"],
+            "image" => ["required", ...FileUploader::IMAGE_RULES],
             "alt_text" => ["nullable", "string"],
 
         ]);
-        $image = $request->file('image');
-        $input['image_name'] = "Image-" . date('Ymdhis') . random_int(0, 1234) . "." . $image->getClientOriginalName();
-
-        $destinationPath = public_path('/images/photos');
-        $image->move($destinationPath, $input['image_name']);
-        $data['image'] = $input['image_name'];
+        $data['image'] = FileUploader::storePublicImage($request->file('image'));
 
         Client::create($data);
         return redirect('/client-index');
@@ -79,16 +75,11 @@ class ClientController extends Controller
         if ($request->image) {
             $data = $request->validate([
                 "name" => ["required", "string"],
-                "image" => ["required"],
+                "image" => ["required", ...FileUploader::IMAGE_RULES],
                 "alt_text" => ["nullable", "string"],
 
             ]);
-            $image = $request->file('image');
-            $input['image_name'] = "Image-" . date('Ymdhis') . random_int(0, 1234) . "." . $image->getClientOriginalName();
-
-            $destinationPath = public_path('/images/photos');
-            $image->move($destinationPath, $input['image_name']);
-            $data['image'] = $input['image_name'];
+            $data['image'] = FileUploader::storePublicImage($request->file('image'));
         } else {
             $data = $request->validate([
                 "name" => ["required", "string"],

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\FileUploader;
 use App\Models\Projects;
 use App\Models\Post ;
 use App\Http\Controllers\Controller;
@@ -43,19 +44,14 @@ class ProjectsController extends Controller
             $data = $request->validate([
                 "name" => ["required", "string"],
                 "demo_url" => ["required", "string"],
-                "image" => ["required","image"],
+                "image" => ["required", ...FileUploader::IMAGE_RULES],
                 "priority" => ["required"],
                 "post_id" => ["required"],
                 "status" => ["required"],
                 "alt_text" => ["nullable", "string"],
 
             ]);
-            $image = $request->file('image');
-            $input['image_name'] = "Image-" . date('Ymdhis') . random_int(0, 1234) . "." . $image->getClientOriginalName();
-
-            $destinationPath = public_path('/images/photos');
-            $image->move($destinationPath, $input['image_name']);
-            $data['image'] = $input['image_name'];
+            $data['image'] = FileUploader::storePublicImage($request->file('image'));
         } 
 
         Projects::create($data);
@@ -90,19 +86,14 @@ class ProjectsController extends Controller
             $data = $request->validate([
                 "name" => ["required", "string"],
                 "demo_url" => ["required", "string"],
-                "image" => ["required","image"],
+                "image" => ["required", ...FileUploader::IMAGE_RULES],
                 "priority" => ["required"],
                 "post_id" => ["required"],
                 "status" => ["required"],
                 "alt_text" => ["nullable", "string"]
 
             ]);
-            $image = $request->file('image');
-            $input['image_name'] = "Image-" . date('Ymdhis') . random_int(0, 1234) . "." . $image->getClientOriginalName();
-
-            $destinationPath = public_path('/images/photos');
-            $image->move($destinationPath, $input['image_name']);
-            $data['image'] = $input['image_name'];
+            $data['image'] = FileUploader::storePublicImage($request->file('image'));
         } else {
             $data = $request->validate([
                 "name" => ["required", "string"],

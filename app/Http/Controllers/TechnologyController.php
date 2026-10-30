@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\FileUploader;
 use App\Models\Technology;
 use App\Models\Tag;
 use App\Http\Controllers\Controller;
@@ -41,17 +42,12 @@ class TechnologyController extends Controller
         if ($request->image) {
             $data = $request->validate([
                 "name" => ["required", "string"],
-                "image" => ["required","image"],
+                "image" => ["required", ...FileUploader::IMAGE_RULES],
                 "alt_text" => ["nullable", "string"],
                 "tag_id" =>["required"]
 
             ]);
-            $image = $request->file('image');
-            $input['image_name'] = "Image-" . date('Ymdhis') . random_int(0, 1234) . "." . $image->getClientOriginalName();
-
-            $destinationPath = public_path('/images/photos');
-            $image->move($destinationPath, $input['image_name']);
-            $data['image'] = $input['image_name'];
+            $data['image'] = FileUploader::storePublicImage($request->file('image'));
         } 
 
         Technology::create($data);
@@ -85,17 +81,12 @@ class TechnologyController extends Controller
         if ($request->image) {
             $data = $request->validate([
                 "name" => ["required", "string"],
-                "image" => ["required","image"],
+                "image" => ["required", ...FileUploader::IMAGE_RULES],
                 "alt_text" => ["nullable", "string"],
                 "tag_id" =>["required"]
 
             ]);
-            $image = $request->file('image');
-            $input['image_name'] = "Image-" . date('Ymdhis') . random_int(0, 1234) . "." . $image->getClientOriginalName();
-
-            $destinationPath = public_path('/images/photos');
-            $image->move($destinationPath, $input['image_name']);
-            $data['image'] = $input['image_name'];
+            $data['image'] = FileUploader::storePublicImage($request->file('image'));
         } else {
             $data = $request->validate([
                 "name" => ["required", "string"],

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\FileUploader;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Setting;
@@ -36,7 +37,7 @@ class SettingController extends Controller
         //
         $data = $request->validate([
             "site_name" => ["required", "string"],
-            "site_logo" => ["required"],
+            "site_logo" => ["required", ...FileUploader::IMAGE_RULES],
             "logo_alt_text" => ["nullable", "string"],
             "site_location" => ["required", "string"],
             "meta_title" => ["required", "string"],
@@ -50,12 +51,7 @@ class SettingController extends Controller
             "linkedin_link" =>["string", "nullable"],
         ]);
 
-        $image = $request->file('site_logo');
-        $input['image_name'] = "Image-" . date('Ymdhis') . random_int(0, 1234) . "." . $image->getClientOriginalName();
-
-        $destinationPath = public_path('/images/photos');
-        $image->move($destinationPath, $input['image_name']);
-        $data['site_logo'] = $input['image_name'];
+        $data['site_logo'] = FileUploader::storePublicImage($request->file('site_logo'));
 
         Setting::create($data);
         return redirect('/setting-index');
@@ -79,7 +75,7 @@ class SettingController extends Controller
         if($request->site_logo){
             $data = $request->validate([
                 "site_name" => ["required", "string"],
-            "site_logo" => ["required","image","dimensions:min_width=582,min_height=30,max_width=682,max_height=110"],
+            "site_logo" => ["required", ...FileUploader::IMAGE_RULES, "dimensions:min_width=582,min_height=30,max_width=682,max_height=110"],
             "logo_alt_text" => ["nullable", "string"],
             "site_location" => ["required", "string"],
             "meta_title" => ["required", "string"],
@@ -93,12 +89,7 @@ class SettingController extends Controller
             "linkedin_link" =>["string", "nullable"],
 
             ]);
-            $image = $request->file('site_logo');
-            $input['image_name'] = "Image-" . date('Ymdhis') . random_int(0, 1234) . "." . $image->getClientOriginalName();
-
-            $destinationPath = public_path('/images/photos');
-            $image->move($destinationPath, $input['image_name']);
-            $data['site_logo'] = $input['image_name'];
+            $data['site_logo'] = FileUploader::storePublicImage($request->file('site_logo'));
         }else{
             $data = $request->validate([
                 "site_name" => ["required", "string"],

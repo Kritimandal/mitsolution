@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\FileUploader;
 use App\Models\Post;
 use App\Models\SubCategory;
 use Illuminate\Validation\Rule;
@@ -47,18 +48,13 @@ class PostController extends Controller
             "meta_keywords" => ["required", "string"],
             "status" => ["required"],
             "priority" => ["required"],
-            "image" => ["required"],
+            "image" => ["required", ...FileUploader::IMAGE_RULES],
             "alt_text" => ["nullable", "string"],
             "sub_category_id" => ["required"],
             "slug" => ["required", 'max:255', 'unique:posts']
 
         ]);
-        $image = $request->file('image');
-        $input['image_name'] = "Image-" . date('Ymdhis') . random_int(0, 1234) . "." . $image->getClientOriginalName();
-
-        $destinationPath = public_path('/images/photos');
-        $image->move($destinationPath, $input['image_name']);
-        $data['image'] = $input['image_name'];
+        $data['image'] = FileUploader::storePublicImage($request->file('image'));
         $slug = $request->input('slug');
         $data['slug'] = str_replace(' ', '-', $slug);
         Post::create($data);
@@ -97,19 +93,14 @@ class PostController extends Controller
                 "meta_title" => ["required", "string"],
                 "meta_description" => ["required", "string"],
                 "meta_keywords" => ["required", "string"],
-                "image" => ["required","image"],
+                "image" => ["required", ...FileUploader::IMAGE_RULES],
                 "status" => ["required"],
                 "priority" => ["required"],
                 "alt_text" => ["nullable", "string"],
                 "sub_category_id" => ["required"]
 
             ]);
-            $image = $request->file('image');
-            $input['image_name'] = "Image-" . date('Ymdhis') . random_int(0, 1234) . "." . $image->getClientOriginalName();
-
-            $destinationPath = public_path('/images/photos');
-            $image->move($destinationPath, $input['image_name']);
-            $data['image'] = $input['image_name'];
+            $data['image'] = FileUploader::storePublicImage($request->file('image'));
            
         } else {
             $data = $request->validate([

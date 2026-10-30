@@ -88,7 +88,7 @@
                     @endif
                     <label for="resume" class="text-dark h5">Upload Resume: </label>
 
-                    <input type="file" name="resume" class="form-control text-dark h5" id="resume"
+                    <input type="file" name="resume" accept=".pdf,.doc,.docx" class="form-control text-dark h5" id="resume"
                         placeholder="resume" value="" required>
                     <span class="text-muted">Upload resume in ms word or pdf format only.</span>
                     @if ($errors->has('resume'))

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\FileUploader;
 use App\Models\Testimonial;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -40,18 +41,13 @@ class TestimonialController extends Controller
             $data = $request->validate([
                 "name" => ["required", "string"],
                 "designation" => ["required", "string"],
-                "image" => ["required","image","dimensions:min_width=200,min_height=241,max_width=220,max_height=261"],
+                "image" => ["required", ...FileUploader::IMAGE_RULES, "dimensions:min_width=200,min_height=241,max_width=220,max_height=261"],
                 "alt_text" => ["nullable", "string"],
                 "content" => ["required", "string"],
                 "rating" => ["required", "in:0,1,2,3,4,5" ],
 
             ]);
-            $image = $request->file('image');
-            $input['image_name'] = "Image-" . date('Ymdhis') . random_int(0, 1234) . "." . $image->getClientOriginalName();
-
-            $destinationPath = public_path('/images/photos');
-            $image->move($destinationPath, $input['image_name']);
-            $data['image'] = $input['image_name'];
+            $data['image'] = FileUploader::storePublicImage($request->file('image'));
         }
 
         Testimonial::create($data);
@@ -84,18 +80,13 @@ class TestimonialController extends Controller
             $data = $request->validate([
                 "name" => ["required", "string"],
                 "designation" => ["required", "string"],
-                "image" =>  ["required","image","dimensions:min_width=200,min_height=241,max_width=220,max_height=261"],
+                "image" => ["required", ...FileUploader::IMAGE_RULES, "dimensions:min_width=200,min_height=241,max_width=220,max_height=261"],
                 "alt_text" => ["nullable", "string"],
                 "content" => ["required", "string"],
                 "rating" => ["required", "in:0,1,2,3,4,5" ],
 
             ]);
-            $image = $request->file('image');
-            $input['image_name'] = "Image-" . date('Ymdhis') . random_int(0, 1234) . "." . $image->getClientOriginalName();
-
-            $destinationPath = public_path('/images/photos');
-            $image->move($destinationPath, $input['image_name']);
-            $data['image'] = $input['image_name'];
+            $data['image'] = FileUploader::storePublicImage($request->file('image'));
         } else {
             $data = $request->validate([
                 "name" => ["required", "string"],

@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Application;
 use App\Models\Banner;
 use App\Http\Controllers\Controller;
+use App\Services\FileUploader;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 
 class ApplicationController extends Controller
 {
@@ -40,29 +41,25 @@ class ApplicationController extends Controller
         //
 
         $data = $request->validate([
-            "name" => ["required", "string"],
-            "resume"=> ["required"],
-            "email"=>["required", "string"],
-            "phone_no" => ["required"],
+            "name" => ["required", "string", "max:255"],
+            "resume"=> ["required", ...FileUploader::RESUME_RULES],
+            "email"=>["required", "email", "max:255"],
+            "phone_no" => ["required", "string", "max:20"],
             "message"=>["required", "string"],
-            "position" => ["required", "string"]
+            "position" => ["required", "string", "max:255"]
 
         ]);
-        $resume = $request->file('resume');
-        $fileName['file_name'] = "resume" . date('Ymdhis') . random_int(0, 1234) . "." . $resume->getClientOriginalName() ;
-
-        $destinationPath = public_path('/resume');
-        $resume->move($destinationPath, $fileName['file_name']);
-        $data['resume'] = $fileName['file_name'];
+        $data['resume'] = FileUploader::storeResume($request->file('resume'));
         Application::create($data);
         return redirect('/application-create')->with('status', 'Your application has been submitted successfully!');
     }
 
-    public function download($filename)
+    public function download(string $filename)
     {
-        $path = public_path("resume/{$filename}");
-    
-        return response()->download($path);
+        $path = FileUploader::resumePath($filename);
+        abort_if($path === null, 404);
+
+        return Storage::disk('local')->download($path);
     }
 
     /**
@@ -86,8 +83,12 @@ class ApplicationController extends Controller
      */
     public function destroy(Application $application)
     {
-        //
+        $path = FileUploader::resumePath($application->resume);
+        if ($path !== null) {
+            Storage::disk('local')->delete($path);
+        }
         $application->delete();
-        redirect('application-index');
+
+        return redirect()->route('application-index');
     }
 }
